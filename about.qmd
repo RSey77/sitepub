@@ -10,7 +10,7 @@ about:
       href: "mailto:rseykora@proton.me"
     - icon: file-earmark-person-fill
       text: View CV
-      href: sitepub/pubs/RS_CV_2026.pdf
+      href: pubs/RS_CV_2026.pdf
       target: _blank
 ---
 
@@ -29,3 +29,4 @@ All graphic figures on this website were created by the site author unless other
 :::
 
 <a href= /references.qmd style="text-decoration: none;">Additional site references</a>
+[](pubs/RS_CV_2026.pdf){style="display:none;"}
