@@ -9,7 +9,7 @@ format:
 ---
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: justify; border: 0px solid #ccc; padding: 6px; border-radius: 5px; background-color: transparent;"}
-To view professional experience in more detail: [See CURRICULUM VITAE](/extra_pages/CV.qmd)
+To view professional experience in more detail: [See CURRICULUM VITAE](/CV.qmd)
 :::
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: center; border: none; padding: 10px; background-color: transparent;"}
@@ -97,5 +97,5 @@ To view professional experience in more detail: [See CURRICULUM VITAE](/extra_pa
   - **2018**
   - 
     1.  Pending citation update: A preliminary presentation examining vibriocidal antibody titers in children, and whether these are associated with protection against *V. cholerae* infection similarly across age strata.
-  - [![](images/Cite7.png)](/pubs/Abstract Vibriocidal Titer Protection in Children Compared to Adults.pdf){.no-icon target="_blank"}
+  - [![](images/Cite7.png)](/pubs/Abstract%20Vibriocidal%20Titer%20Protection%20in%20Children%20Compared%20to%20Adults.pdf){.no-icon target="_blank"}
 :::
