@@ -8,10 +8,7 @@ about:
     - icon: envelope
       text: Email
       href: "mailto:rseykora@proton.me"
-    - icon: file-earmark-person-fill
-      text: View CV
-      href: /CV.qmd
-      target: _blank
+
 ---
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: center; border: 0px solid #ccc; padding: 10px; border-radius: 5px; background-color: transparent;"}
