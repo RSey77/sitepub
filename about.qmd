@@ -28,3 +28,11 @@ All graphic figures on this website were created by the site author unless other
 :::
 
 <a href= /extra_pages/references.qmd style="text-decoration: none;">Additional site references</a>
+
+::: {.text-center}
+::: {.btn-group role="group" aria-label="Contact and Resume"}
+[<i class="bi bi-envelope"></i> Email](mailto:me@proton.me){.btn .btn-secondary role="button"}
+[<i class="bi bi-file-earmark-person-fill"></i> Resume](CV.qmd){.btn .btn-secondary role="button"}
+:::
+:::
+
