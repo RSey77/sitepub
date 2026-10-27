@@ -1,0 +1,84 @@
+---
+title: "Publications"
+page-layout: full
+sidebar: false
+toc: false
+format: 
+  html:
+    link-external-newwindow: true
+---
+
+::: {.list-table tbl-colwidths="[10, 45, 15]"}
+- 
+
+  - Year
+  - Citation
+  - View PDF
+
+- 
+
+  - **2023**
+  - 
+    1.  Pending citation update: A systems serology study investigating correlates of protection against *Vibrio cholerae* infection.
+  - [![](images/Cite1.png)](/pubs/Systems serology Vibrio cholerae disease.pdf){.no-icon target="_blank"}
+
+- 
+
+  - **2022**
+  - 
+    2.  Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells.
+  - [![](images/Cite2.png)](/pubs/High-throughput ID RNA LEs in neuronal cells.pdf){.no-icon target="_blank"}
+
+- 
+
+  - **2020**
+  - 
+    3.  Charles, R.C., Kelly, M., Tam, J.M., Akter, A., Hossain, M., Islam, K., Biswas, R., Kamruzzaman, M., Chowdhury, F., Khan, A.I., et al. (2020). Humans Surviving Cholera Develop Antibodies against Vibrio cholerae O-Specific Polysaccharide That Inhibit Pathogen Motility. mBio 11. [https://doi.org/10.1128/mbio.02847-20](https://journals.asm.org/doi/full/10.1128/mbio.02847-20)
+  - [![](images/Cite3.png)](/pubs/Post%20cholera%20anti-OSP%20antibodies%20that%20inhibit%20motility.pdf){.no-icon target="_blank"}
+
+- 
+
+  - 
+
+  - 
+
+    4.  Marquis, K.A., Seykora, R., Weiss, A.N., Morris, M.C., and Ferran, M.C. (2020). The VSV matrix protein inhibits NF-κB and the interferon response independently in mouse L929 cells. Virology 548, 117–123. [https://doi.org/10.1016/j.virol.2020.06.013](https://pdf.sciencedirectassets.com/272412/1-s2.0-S0042682220X00080/1-s2.0-S0042682220301240/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBEaCXVzLWVhc3QtMSJIMEYCIQDNo79J6PETkg%2FtJRkvVJTX%2FmWTUnbmBOom9MmYBcvSDAIhAL5337qbNi6%2F1CE%2Ft2VrU5IbpBA%2BKh3H8Xw9Xy7oelIuKrsFCNr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQBRoMMDU5MDAzNTQ2ODY1IgzISVUR2KHTPjS3em4qjwUVktKTBIuiS%2FqYaDfYABrbAqaTWx1xs6Bh6mwByss4eM2Nj2V2j3IxyM%2Fb6wKHzvN9ThmO4SxOYLFkB8bpvw3HrK6tRaFhopwOF%2FH%2FAwm4WjR5gOsJJlP8VDRypj7OJ6t72%2BZe0oP7mJwnf9XpN%2FCKTmx7c0uttTv8%2F7%2FMaGLngSkMfsHlKWLyb1j4XtNqiOKFMociqxbu3IEUIelGFgGL2We1PlldZFGfQqNtSZ36FIwH5XbVhtP0VTwoPxGaNsS%2FqXwLbEVizcr%2BIXMJqCoDQwGBYRRoV8%2FIMSuU0JoOHSn2khfSUrEY8sCByV0FFmjGuUPXunqzJDJjULPIyU%2FiOhrwvnXJn%2BAR917U3xFHoUbw9ujVnNOwmFTg1TktJiWJQgcWFaDiZ5Jv6uxKoRBECaYcmCgCps8aWjDhDiKrk35sFnnzjEfOUX1Xl4UmDWp4KFISSg5XG49cDYKiLpfVYIlffGhjn4sRJ1CGIhXBaXUqBNbJCfs5C2LdRjFD6rmEgy6v9v3NlEJPXAnsiXwqyjtSO8EbTHMQ3l08Z%2FMbyk%2FLa8w3pIUh%2FaL%2FZBgJtli52sIjZy47fMNJowzOjpRm6MfVc6n6lEVDQw9iSwYaxGKP58tA4VXkcfwyXYZh53G0Z2z4g4sbUJn56h9z0z8l0Rs6yxz%2FpF4LoFch7OR0T7NT20ZuAzwSy73fhKzr4Ic0LZB9lrBL4JKnR7p6G3Ve9KxxAS6UEHEfqJVeFhF3hKtW4jCVINIBeUslryonilZkiK3uV1UMfuPksq4MLxxc2wqcmHD1vyuAxKGA2TfE7Hm2bK0myQ3cyezcsmgD82KRln79Xv3DdbdpVJYsVxCKw3qdDN2hMLwoCOh8wj12MIH%2B%2FdYGOrAB5zmFs0Tl6cbNccuZaqnM82V3QXfaKKn9Mu1W0JNoo9twSkz8SuowS3R%2FYvfy7IDbJDeSKFU98iZfAwyRUabaiBlcj5smFtJ4W9cq1PW1d6pOhfi6m3EPaOX7%2Ftor0VeFFapwJTqx097Q0dfG4xWrpx7UQOwMVombYJoloCduoFrZSP3CbaxmfQ0F1PCk8Go3eUX1mg1XA5%2BQi%2BvDGIgDIw%2Fhe4L4hqfIfLNCEUPHR2M%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20261026T171923Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY5PNEJFNJ%2F20261026%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=9e5140aa8325893c478acaa1e82b4a3f67a4574f8804d716793dc21e29ef52a0&hash=ac269e4117a8c1404ce52c3aa2e2a59e1a2282afa73a7e9a2a509dc8c11e01d4&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0042682220301240&tid=spdf-8b607307-d5ab-442f-9120-982648fb6f3e&sid=5bb89d0a83e3d445d209001-ce49dd3b0c5agxrqa&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=13170e53530353575706&rr=a50b202e1c6796bd&cc=us)
+
+  - [![](images/Cite4.png)](/pubs/M%20inhibits%20NF-κB%20and%20IFN%20independently%20mouse%20cells.pdf){.no-icon target="_blank"}
+
+- 
+
+  - **2019**
+  - 
+    5.  Weil, A.A., Seykora, R., and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere 4. [https://doi.org/10.1128/mSphere.00597-19](https://journals.asm.org/doi/full/10.1128/msphere.00597-19)
+  - [![](images/Cite5.png)](/pubs/V%20cholerae%20Immunity%20and%20the%20Microbiome.pdf){.no-icon target="_blank"}
+
+- 
+
+  - 
+
+  - 
+
+    6.  Pending citation update: A study investigating whether the presence of *Vibrio cholerae*-killing antibodies in young children predicts protection from future infection, as in older patients.
+
+  - [![](images/Cite6.png)](/pubs/Vibriocidal Titer Protection From Cholera in Children.pdf){.no-icon target="_blank"}
+:::
+
+::: {style="max-width: 500px; font-size: 1.2em; font-style: bold; margin: 5px auto; text-align: center; border: none; padding: 0px; background-color: transparent;"}
+Abstracts & Presentations
+:::
+
+::: {.list-table tbl-colwidths="[10, 45, 15]"}
+- 
+
+  - Year
+  - Citation
+  - View
+
+- 
+
+  - **2018**
+  - 
+    1.  Pending citation update: A preliminary presentation examining vibriocidal antibody titers in children, and whether these are associated with protection against *V. cholerae* infection similarly across age strata.
+  - [![](images/Cite7.png)](/pubs/Abstract Vibriocidal Titer Protection in Children Compared to Adults.pdf){.no-icon target="_blank"}
+:::

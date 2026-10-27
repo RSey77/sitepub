@@ -1,0 +1,16 @@
+---
+subtitle: ""
+text: "A selection of written work"
+page-layout: full
+format: 
+  html:
+    css: styles.css
+listing: 
+    contents: "pages/*.qmd"
+    type: grid
+    sort: "order asc"
+    image-placeholder: "/images/neutrophils_line.png"
+    image-height: 270px
+    fields: [image, title, description]
+    grid-columns: 2
+---

@@ -1,0 +1,30 @@
+---
+title: "Viability Staining with Synthetic Cell Mimics"
+listing-title: "Application Note: Viability Staining with 'Synthetic Cells'"
+image: "/images/neutrophils_line.png"
+description: "Commercial Application Note, Last Edited: 2023"
+order: 3
+page-layout: full
+execute:
+  fig-align: center
+---
+
+![](/images/viacomp1.png){fig-align="center"}
+
+![](/images/viacomp2.png){fig-align="center"}
+
+![](/images/viacomp3.png){fig-align="center"}
+
+```{=html}
+<details>
+  <summary>References</summary>
+  <img src="/images/viacomp-ref.png" style="width: 1350px; max-width: 95%; height: auto;" />
+</details>
+```
+
+```{=html}
+<details>
+  <summary>Copyright Notice</summary>
+  <img src="/images/viacomp-cr.png" style="width: 1350px; max-width: 95%; height: auto;" />
+</details>
+```

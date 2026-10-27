@@ -1,0 +1,79 @@
+---
+title: " "
+page-layout: full
+sidebar: false
+toc: false
+---
+
+```{=html}
+<style>
+#quarto-content.page-rows-contents {
+  grid-template-rows: auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+#quarto-document-content, 
+.page-columns, 
+main.content {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+.hero-banner {
+  position: relative;
+  width: 100vw;
+  height: 77vh; 
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), 
+              url('images/home_banner.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(140, 139, 161, 1);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 17px 0;
+  margin: 0;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 7px 20px;
+  background-color: transparent;
+  color: #a39c93;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  border-radius: 99px;
+  border: 0.5px solid #a39c93;
+  transition: all 0.2s ease;
+}
+
+.hero-btn:hover {
+  background-color: rgba(112, 135, 167, 0.10);
+  color: #7087a7;
+  border-color: rgba(112, 135, 167, 0.9);
+  transform: translateY(-2px);
+}
+
+</style>
+```
+
+::: hero-banner
+:::
+
+::: hero-buttons
+<a href="/work.qmd" class="hero-btn">Publications & Additional Work</a>
+:::

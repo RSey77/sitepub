@@ -1,0 +1,475 @@
+/*-- scss:defaults --*/
+// Custom dark theme based on Quarto's built-in Solar theme.
+//
+
+// quarto-scss-analysis-annotation { "origin": "solar (builtin theme)" }
+
+$theme: "darkmode" !default;
+
+//
+// Color system
+//
+
+// stylelint-disable
+$white:    #fff !default;
+$gray-100: #fdf6e3 !default;
+$gray-200: #eee8d5 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #839496 !default;
+$gray-700: #495057 !default;
+$gray-800: #073642 !default;
+$gray-900: #002b36 !default;
+$black:    #000 !default;
+
+$blue:    #b58900 !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #d33682 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #cb4b16 !default;
+$green:   #2aa198 !default;
+$teal:    #20c997 !default;
+$cyan:    #268bd2 !default;
+
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$min-contrast-ratio:   2.5 !default;
+
+// Site palette
+$site-bg:   #02071d !default;
+$site-text: #F0E1D1 !default;
+
+// Body
+
+$body-bg:                   $site-bg !default;
+$body-color:                $site-text !default;
+
+// Links
+
+$link-color:                $site-text !default;
+$link-hover-color:          #5a7fb1 !default;
+
+// Components
+
+$component-active-color:      rgba(255, 255, 255, .75) !default;
+$component-active-bg:         $gray-800 !default;
+
+// Fonts
+
+$font-family-sans-serif:      "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// Tables
+
+$table-accent-bg:             rgba($white, .05) !default;
+$table-hover-bg:              rgba($white, .075) !default;
+$table-border-color:          $component-active-bg !default;
+$table-dark-bg:               $gray-500 !default;
+$table-dark-border-color:     darken($gray-500, 3%) !default;
+$table-dark-color:            $body-bg !default;
+
+$table-bg-scale:              0% !default;
+
+// Forms
+
+$input-bg:                    rgba($site-text, .1) !default;
+$input-disabled-color:        $gray-100 !default;
+$input-disabled-bg:           $gray-600 !default;
+
+$input-color:                 $site-text !default;
+$input-border-color:          rgba($site-text, .2) !default;
+$input-placeholder-color:     rgba($site-text, .6) !default;
+$input-group-addon-color:     $site-text !default;
+$input-group-addon-bg:        rgba($site-text, .08) !default;
+
+$form-select-disabled-color:  $gray-700 !default;
+$form-select-disabled-bg:     $input-disabled-bg !default;
+
+$form-check-input-bg:         rgba(255, 255, 255, .75) !default;
+$form-check-input-border:     1px solid rgba($site-text, .3) !default;
+$form-check-input-checked-bg-color: $primary !default;
+
+$form-switch-color:           rgba($site-text, .75) !default;
+$form-switch-focus-color:     $form-switch-color !default;
+
+$form-range-track-bg:         $gray-800 !default;
+$form-range-thumb-bg:         $primary !default;
+
+$form-file-button-color:      $site-text !default;
+
+// Dropdowns
+
+$dropdown-bg:                 $site-bg !default;
+$dropdown-divider-bg:         rgba($site-text, .15) !default;
+$dropdown-link-color:         $site-text !default;
+$dropdown-link-hover-color:   $site-text !default;
+$dropdown-link-hover-bg:      rgba($site-text, .08) !default;
+
+// Navs
+
+$nav-tabs-border-color:             rgba($site-text, .15) !default;
+$nav-tabs-link-hover-border-color:  $nav-tabs-border-color !default;
+$nav-tabs-link-active-color:        $site-text !default;
+$nav-tabs-link-active-bg:           $site-bg !default;
+$nav-tabs-link-active-border-color: $nav-tabs-border-color !default;
+
+// Navbars
+
+// Pagination
+
+$pagination-bg:                     transparent !default;
+$pagination-border-color:           rgba($site-text, .15) !default;
+$pagination-hover-bg:               rgba($site-text, .08) !default;
+$pagination-hover-border-color:     $pagination-border-color !default;
+$pagination-active-color:           $site-bg !default;
+$pagination-active-bg:              $site-text !default;
+$pagination-active-border-color:    $site-text !default;
+$pagination-disabled-color:         $gray-600 !default;
+$pagination-disabled-bg:            transparent !default;
+$pagination-disabled-border-color:  rgba($site-text, .1) !default;
+
+// Cards
+
+$card-border-color: rgba($site-text, .1) !default;
+$card-cap-bg:       rgba($site-text, 0.01) !default;
+$card-bg:           rgba($site-text, .01) !default;
+
+// Popovers
+
+$popover-bg:            $site-bg !default;
+$popover-border-color:  rgba($site-text, .15) !default;
+$popover-header-bg:     $site-bg !default;
+
+// Toasts
+
+$toast-background-color:        lighten($site-bg, 5%) !default;
+$toast-border-color:            rgba($site-text, .15) !default;
+$toast-header-color:            $site-text !default;
+$toast-header-background-color: $toast-background-color !default;
+$toast-header-border-color:     $toast-border-color !default;
+
+
+// Modals
+
+$modal-content-bg:             $site-bg !default;
+$modal-content-border-color:   rgba($site-text, .15) !default;
+$modal-header-border-color:    rgba($site-text, .15) !default;
+
+
+// Progress bars
+
+$progress-bg:                  rgba($site-text, .1) !default;
+$progress-bar-color:           $primary !default;
+
+
+// List group
+
+$list-group-color:              $site-text !default;
+$list-group-bg:                 transparent !default;
+$list-group-border-color:       rgba($site-text, .15) !default;
+$list-group-hover-bg:           rgba($site-text, .08) !default;
+$list-group-border-color:       rgba($site-text, .15) !default;
+$list-group-active-color:       $site-bg !default;
+$list-group-disabled-color:     $gray-600 !default;
+$list-group-disabled-bg:        transparent !default;
+$list-group-action-color:       $site-text !default;
+$list-group-action-hover-color: $site-text !default;
+
+
+// Breadcrumbs
+
+$breadcrumb-padding-y:       .375rem !default;
+$breadcrumb-padding-x:       .75rem !default;
+$breadcrumb-bg:              rgba($site-text, .08) !default;
+$breadcrumb-active-color:    rgba($site-text, .65) !default;
+$breadcrumb-border-radius:   .25rem !default;
+
+// Close
+
+$btn-close-color: $site-text !default;
+
+
+// Code
+
+$pre-color: inherit !default;
+
+
+/*-- scss:rules --*/
+
+// most color and indicator settings inherited directly from solar theme
+// lighter font selection, default Sans Pro weight 400+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" !default;
+
+@if $web-font-path {
+  @import url($web-font-path);
+}
+// Buttons
+
+.btn {
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      @if $enable-gradients {
+        background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
+      } @else {
+        background-color: $value;
+      }
+    }
+  }
+}
+
+// Indicators
+
+.alert {
+  color: $white;
+  border: none;
+
+  a,
+  .alert-link {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+      @if $enable-gradients {
+        background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
+      } @else {
+        background-color: $value;
+      }
+    }
+  }
+
+  &-light {
+    &,
+    a:not(.btn),
+    .alert-link {
+      color: $body-bg;
+    }
+  }
+}
+
+.badge {
+  &.bg-light {
+    color: $dark;
+  }
+}
+
+.tooltip {
+  --bs-tooltip-bg: var(--bs-tertiary-bg);
+  --bs-tooltip-color: var(--bs-emphasis-color);
+}
+
+//site colors defined above
+
+:root {
+  --site-bg: #{$site-bg};
+  --site-text: #{$site-text};
+
+  --bs-body-bg: #{$site-bg};
+  --bs-body-color: #{$site-text};
+
+  --bs-emphasis-color: #{$site-text};
+  --bs-secondary-color: #{rgba($site-text, .75)};
+
+  --bs-link-color: #{$site-text};
+  --bs-link-hover-color: #{$site-text};
+}
+
+// type settings
+html,
+body {
+  background-color: $site-bg;
+  color: $site-text;
+  font-size: 0.95rem;
+  font-weight: 200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h6 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+//heading for projects page
+h5 {
+  font-size: 1rem;
+}
+// global content settings
+
+// keep content centered and capped on desktop
+#quarto-content {
+  width: 100%;
+}
+
+#quarto-document-content {
+  width: 100%;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#title-block-header .quarto-title {
+  text-align: center;
+  margin-bottom: 0.5rem !important;
+}
+
+#title-block-header .subtitle {
+  text-align: center;
+}
+
+#title-block-header .description {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 300 !important;
+}
+
+/*-- scss:defaults --*/
+$icon-logo:   url('images/logo4dark.png');
+$icon-menu:   url('images/menu4dark.svg');
+$icon-search: url('images/search4dark.svg');
+$icon-toggle: url('images/sun4dark.svg');
+
+/*-- scss:mixins --*/
+@mixin icon-swap($image) {
+  background-image: $image !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+@mixin center-content {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+// vertically center an absolutely positioned item
+@mixin abs-middle($side: null, $offset: 0) {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  @if $side { #{$side}: $offset !important; }
+}
+
+/*-- scss:rules --*/
+
+.navbar {
+  position: relative;
+  min-height: 3.2rem;
+  background-color: $site-bg !important;
+  border-bottom: 0.5px solid rgba(140, 139, 161, 1) !important;
+  z-index: 1030;
+}
+
+.navbar-container { position: relative; }
+
+// 1. logo
+.navbar-brand {
+  @include icon-swap($icon-logo);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  width: 140px;
+  height: 40px;
+  font-size: 0 !important;
+
+  img { opacity: 0 !important; }
+}
+
+// 2. search icon
+.aa-DetachedSearchButtonIcon {
+  @include icon-swap($icon-search);
+  width: 2rem !important;
+  height: 2rem !important;
+
+  .aa-SubmitIcon { display: none !important; }
+}
+
+// 3. menu
+.navbar-nav .dropdown-toggle {
+  @include icon-swap($icon-menu);
+  @include center-content;
+  position: relative;
+  top: -3px;
+  width: 2rem !important;   // this !important was already beating your later 24px
+  height: 2rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+
+  &::after { display: none !important; content: none !important; }
+}
+
+.navbar-nav .dropdown-menu {
+  left: 0 !important;
+  right: auto !important;
+  width: 140px;
+  min-width: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  .dropdown-item { border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
+}
+
+// 4. light/dark toggle
+.quarto-color-scheme-toggle .bi::before {
+  @include icon-swap($icon-toggle);
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: -0.125em;
+}
+
+// nav controls
+.navbar .quarto-navigation-tool,
+.navbar .quarto-search-button,
+.navbar .quarto-color-scheme-toggle,
+.navbar .dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .quarto-navbar-tools {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+// positioning: one set of rules for ALL widths
+.navbar .quarto-navbar-tools { @include abs-middle(left, 1rem); }
+.navbar-nav                  { @include abs-middle(left, 3.5rem); margin: 0 !important; }
+#quarto-search               { @include abs-middle(right, 1rem); }
+
+// the only mobile-specific pieces
+@media (max-width: 991.98px) {
+  .navbar-brand-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 !important;
+  }
+  .navbar-brand img { max-height: 28px; }
+}
+

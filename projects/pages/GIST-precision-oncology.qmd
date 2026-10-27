@@ -1,0 +1,767 @@
+---
+title: "GIST Sarcoma as a model for precision oncology"
+listing-title: "GIST Sarcoma: An interactive data dashboard"
+subtitle: "Gastrointestinal Stromal Tumors: For this rare cancer group, genetic insight helps guide treatment."
+description: "Interactive Data Story (Narrative Dashboard), Authored: 2026"
+order: 1
+page-layout: full
+image: "/images/GIST_outline.png"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+editor:
+  visual:
+    canonical: false
+---
+
+::: justified-text
+[**Gastrointestinal stromal tumors**](https://public.tableau.com/app/profile/rowen.seykora/viz/Mappingbiologicaldiversitywithinararegroupofcancers/Dashboard1 "View data dashboard on Tableau Public") are a class of sarcomas with a shared mesenchymal origin,^1,2^ most commonly arising from the interstitial cells of Cajal (ICCs), pacemaker cells that help coordinate rhythmic contractions in the gut walls.^3-5^
+
+Sarcoma represents about 1% of adult cancers.^6^ While GIST accounts for anywhere from roughly 14% to 20% of soft tissue sarcoma (STS) cases,^6,7^ it is considered a rare disease, diagnosed in about 10-15 cases per million individuals annually.^2-4^ Since its classification, greater awareness of what drives GIST formation has opened avenues to more effective treatments and improved its prognosis.^3,9^ GIST is heterogeneous across genetic subtype, patient age, and site of tumor origin, among several other factors. Disease management is often interdisciplinary and adjusted to reflect this case-by-case diversity.^10,11^ Genetic subtype is a key focus from diagnosis through treatment, where it predicts initial drug sensitivity and can guide immediate therapeutic course of action.^9-13^ Variables such as patient age and primary tumor site offer diagnostic clues at presentation, assist in risk stratification, and, alongside an understanding of molecular subtype, contribute to overall clinical strategy.^11^ Evaluating individual variation is now a cornerstone of successful GIST management,^3,8^ and this rare cancer stands out as a model of precision medicine in solid tumor treatment.^10-14^
+:::
+
+```{ojs}
+//| echo: false
+colorallx = "currentColor"
+```
+
+```{ojs}
+//| echo: false
+size = 500
+```
+
+```{ojs}
+//| echo: false
+categoryColors = new Map([
+  ["KIT/PDGFRA Primary Mutation", "#4A94D0"],
+  ["KIT", "#4A94D0"],
+  ["Exon 11", "#60A0D5"],
+  ["Exon 9", "#76AEDB"],
+  ["Exon 13", "#9AC4E6"],
+  ["Exon 17", "#8ABAE0"],
+  ["PDGFRA", "#4A84D0"],
+  ["Exon 18", "#5C90D4"],
+  ["Exon 12", "#6E9DD9"],
+  ["Exon 14", "#82AADE"],
+  ["Non-KIT/PDGFRA", "#4A72D0"],
+  ["SDH-Deficient", "#4A7CD0"],
+  ["SDHA", "#8AABE4"],
+  ["SDHB/SDHC/SDHD", "#769CDB"],
+  ["SDH Silencing Epimutations", "#608BD5"],
+  ["SDH-Competent", "#4A72D0"],
+  ["Other Rare Aberrations", "#8AA6E4"],
+  ["RTK Fusions (NTRK3 or FGFR1)", "#6E8FD9"],
+  ["NF1", "#5C80D4"],
+  ["PIK3CA", "#829EDE"],
+  ["BRAF", "#9AB2E6"],
+  ["RAS", "#AABDEB"]
+]);
+```
+
+```{ojs}
+//| echo: false
+hierData = {
+  return {
+    name: "root",
+    children: Array.from(d3.group(data, d => d["Constant"]), ([constant, r1]) => ({
+      name: constant,
+      children: Array.from(d3.group(r1, d => d["Gene or Category"]), ([gene, r2]) => ({
+        name: gene,
+        children: r2.map(d => ({
+          name: d["Hotspots or Subtypes"],
+          value: d["% of Overall Cases"]
+        }))
+      }))
+    }))
+  };
+}
+```
+
+```{ojs}
+//| echo: false
+tipText = d =>
+  `${d.ancestors().reverse().slice(1).map(a => a.data.name).join(" › ")}\n${+d.value.toFixed(1)}% of overall cases`
+  
+```
+
+```{ojs}
+//| echo: false
+icicle = (S) => {
+  const h = d3.hierarchy(hierData)
+    .sum(d => d.value || 0)
+    .sort((a, b) => b.value - a.value);
+
+  const root = d3.partition().size([S, S * (h.height + 1) / h.height])(h);
+  const offset = root.y1;
+  root.each(d => d.target = { x0: d.x0, x1: d.x1, y0: d.y0 - offset, y1: d.y1 - offset });
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, S, S])
+    .style("width", `${S}px`).style("max-width", "100%").style("height", "auto")
+    .style("overflow", "hidden").style("font", "11px sans-serif");
+
+  const cell = svg.selectAll("g")
+    .data(root.descendants().slice(1))
+    .join("g")
+    .attr("transform", d => `translate(${d.target.y0},${d.target.x0})`);
+
+  const rect = cell.append("rect")
+    .attr("width", d => d.target.y1 - d.target.y0)
+    .attr("height", d => d.target.x1 - d.target.x0)
+    .attr("fill", d => categoryColors.get(d.data.name) ?? colorallx)
+    .attr("stroke", colorallx).attr("stroke-width", 1)
+    .style("cursor", d => d.children ? "pointer" : "default")
+    .on("click", clicked);
+
+  const visible = t => t.y1 <= S + 1 && t.y0 >= -1 && t.x1 - t.x0 > 14;
+
+  const labelText = d => `${d.data.name} (${+d.value.toFixed(1)}%)`;
+  const wrapIcicle = function (d) {
+    wrapLabel(this, labelText(d), d.target.y1 - d.target.y0 - 8, d.target.x1 - d.target.x0 - 2, { x: 4 });
+  };
+
+  const text = cell.append("text")
+    .attr("x", 4).attr("y", 12).attr("fill", colorallx)
+    .attr("fill-opacity", d => +visible(d.target))
+    .style("pointer-events", "none")
+    .each(wrapIcicle);
+
+  cell.append("title").text(tipText);
+
+  let focus = root;
+  function clicked(event, p) {
+    if (!p.children && p !== focus) return;
+    focus = (focus === p) ? p.parent : p;
+    const yBase = focus === root ? offset : focus.y0;
+
+    root.each(d => d.target = {
+      x0: (d.x0 - focus.x0) / (focus.x1 - focus.x0) * S,
+      x1: (d.x1 - focus.x0) / (focus.x1 - focus.x0) * S,
+      y0: d.y0 - yBase,
+      y1: d.y1 - yBase
+    });
+text.each(wrapIcicle);
+    const t = cell.transition().duration(750)
+      .attr("transform", d => `translate(${d.target.y0},${d.target.x0})`);
+    rect.transition(t).attr("height", d => d.target.x1 - d.target.x0);
+    text.transition(t).attr("fill-opacity", d => +visible(d.target));
+  }
+
+  return svg.node();
+}
+```
+
+```{ojs}
+//| echo: false
+sunburst = (S) => {
+  const h = d3.hierarchy(hierData)
+    .sum(d => d.value || 0)
+    .sort((a, b) => b.value - a.value);
+
+  const levels = h.height + 1;                       // includes the hidden root
+  const root = d3.partition().size([2 * Math.PI, levels])(h);
+  root.each(d => d.current = d);
+
+  const radius = S / (2 * levels);                   // ring thickness; also the center hole
+  const arc = d3.arc()
+    .startAngle(d => d.x0).endAngle(d => d.x1)
+    .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+    .padRadius(radius * 1.5)
+    .innerRadius(d => d.y0 * radius)
+    .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
+
+  const arcVisible = d => d.y1 <= levels && d.y0 >= 1 && d.x1 > d.x0;
+  const labelVisible = d => d.y1 <= levels && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
+  const labelTransform = d => {
+    const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+    const y = (d.y0 + d.y1) / 2 * radius;
+    return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+  };
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [-S / 2, -S / 2, S, S])
+    .style("width", `${S}px`).style("max-width", "100%").style("height", "auto")
+    .style("font", "9px sans-serif");
+
+  const nodes = root.descendants().slice(1);
+  const path = svg.append("g").selectAll("path").data(nodes).join("path")
+    .attr("fill", d => categoryColors.get(d.data.name) ?? colorallx)
+    .attr("stroke", colorallx).attr("stroke-width", 0.1)
+    .attr("d", d => arc(d.current))
+    .style("cursor", d => d.children ? "pointer" : "default")
+    .on("click", clicked);
+
+  path.append("title").text(tipText);
+
+  // Wrap a label to fit its ring segment (width = ring thickness, height = arc length)
+  const wrapRadial = function (d, t = d.current) {
+    wrapLabel(this, d.data.name,
+      (t.y1 - t.y0) * radius - 8,
+      (t.x1 - t.x0) * ((t.y0 + t.y1) / 2) * radius - 2,
+      { x: 0, center: true });
+  };
+
+  const label = svg.append("g")
+    .attr("pointer-events", "none").attr("text-anchor", "middle")
+    .style("user-select", "none")
+    .selectAll("text").data(nodes).join("text")
+    .attr("fill", colorallx)
+    .attr("fill-opacity", d => +labelVisible(d.current))
+    .attr("transform", d => labelTransform(d.current))
+    .each(function (d) { wrapRadial.call(this, d); });
+
+  // Center disc: click to zoom back out one level
+  const center = svg.append("circle").datum(root)
+    .attr("r", radius).attr("fill", "none")
+    .attr("pointer-events", "all").style("cursor", "pointer")
+    .on("click", clicked);
+
+  function clicked(event, p) {
+    if (!p.children) return;
+    center.datum(p.parent || root);
+
+    root.each(d => d.target = {
+      x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+      x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+      y0: Math.max(0, d.y0 - p.depth),
+      y1: Math.max(0, d.y1 - p.depth)
+    });
+
+    // Re-wrap labels to each section's new size
+    label.each(function (d) { wrapRadial.call(this, d, d.target); });
+
+    const t = svg.transition().duration(750);
+
+    path.transition(t)
+      .tween("data", d => {
+        const i = d3.interpolate(d.current, d.target);
+        return k => d.current = i(k);
+      })
+      .attr("opacity", d => +arcVisible(d.target))
+      .attrTween("d", d => () => arc(d.current));
+
+    label.transition(t)
+      .attr("fill-opacity", d => +labelVisible(d.target))
+      .attrTween("transform", d => () => labelTransform(d.current));
+  }
+  return svg.node();
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const wrap = html`<div class="gist-chart" style="width: ${size + 32}px; max-width: 100%; margin: 0 auto; padding: 15px; border: 1px solid #839496; border-radius: 4px; background: rgba(131, 148, 150, 0.15);"> <div class="ctl" style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;"></div>
+    <div class="guide" style="text-align: center; margin-bottom: 7.5px; font: 300 14px/1.25 sans-serif; opacity: 1; color: #873f2b;">This is an interactive, representative model. To drill down, click the sub-sections. To return to a higher level, click on the prior section.</div>
+    <div class="a"></div>
+    <div class="b" style="display:none"></div>
+    <div class="cap" style="margin-top: 10px; text-align: justify; font: 300 12px sans-serif; opacity: 0.7;">The percentages of genetic driver frequencies shown above are derived from broadly established epidemiological ranges. They do not relate to any one specific clinical dataset. These representative frequencies account for single-tumor primary drivers. Multiple concurrent sporadic primary tumors with distinct activating mutations occur in ~1% of cases. A similarly minute percentage of cases have drivers that remain unidentified.
+</div>
+  </div>`;
+  const build = (fn, host) => {
+    try { host.append(fn(size)); }
+    catch (e) {
+      host.append(html`<pre style="color:#c0392b;white-space:pre-wrap;font-size:12px">${fn.name} failed: ${e.message}</pre>`);
+    }
+  };
+  const a = wrap.querySelector(".a");
+  const b = wrap.querySelector(".b");
+  build(icicle, a);
+  build(sunburst, b);
+  
+const title = html`<div style="flex: 1; text-align: right; font: 300 15px/1.25 sans-serif;">Figure 1. GIST Primary Mutation Frequencies</div>`;
+
+  const btn = html`<button type="button" style=" color: #873f2b; 
+    padding: 5px 9px; cursor: pointer; border-radius: 6px;
+    border: 1px solid #9ea9ad; background: #c8d6db; font: 12px sans-serif;">Toggle to sunburst chart</button>`;
+      btn.onmouseenter = () => btn.style.background = "rgba(131, 148, 150, 0.4)";
+  btn.onmouseleave = () => btn.style.background = "rgba(200, 214, 219, 1)";
+  
+    const guideEl = wrap.querySelector(".guide");
+  const guideText = {
+    linear: guideEl.textContent,
+    radial: "This is an interactive, representative model. To drill down, click the sub-slices. To return to a higher level, click the open center of the chart."
+  };
+  
+  let radialMode = false;
+  btn.onclick = () => {
+    radialMode = !radialMode;
+    a.style.display = radialMode ? "none" : "block";
+    b.style.display = radialMode ? "block" : "none";
+    btn.textContent = radialMode ? "Toggle to icicle chart" : "Toggle to sunburst chart";
+    guideEl.textContent = radialMode ? guideText.radial : guideText.linear;
+  };
+
+  wrap.querySelector(".ctl").append(btn, title);
+  return wrap;
+}
+```
+
+```{ojs}
+//| echo: false
+wrapLabel = (node, str, maxW, maxH, { x = 0, center = false } = {}) => {
+  const cw = 6, lh = 10;                       // approx. char width / line height at 10px font
+  const perLine = Math.max(2, Math.floor(maxW / cw));
+  const maxLines = Math.max(1, Math.floor(maxH / lh));
+
+  let lines = [], cur = "";
+  for (const w of str.split(/\s+/)) {
+    const t = cur ? cur + " " + w : w;
+    if (!cur || t.length <= perLine) cur = t;
+    else { lines.push(cur); cur = w; }
+  }
+  if (cur) lines.push(cur);
+
+  if (lines.length > maxLines) {
+    lines = lines.slice(0, maxLines);
+    lines[maxLines - 1] += "…";
+  }
+  lines = lines.map(l => l.length > perLine ? l.slice(0, perLine - 1) + "…" : l);
+  const sel = d3.select(node).text(null);
+  const firstDy = center ? 3.5 - (lines.length - 1) * lh / 2 : 0;
+  lines.forEach((l, i) =>
+    sel.append("tspan").attr("x", x).attr("dy", i === 0 ? firstDy : lh).text(l));
+}
+```
+
+```{ojs}
+//| include: false
+data = await FileAttachment("GIST_mutations.json").json()
+```
+
+```{=html}
+<style>
+.cell:has(.gist-chart) {
+  float: right;
+  width: auto;
+  margin: 0 0 14px 21px;
+}
+.gist-chart { float: none !important; margin: 0 !important; }
+
+/* Stack on mobile */
+@media (max-width: 700px) {
+  .cell:has(.gist-chart) {
+    float: none;
+    width: 100%;
+    margin: 0 auto 15px;
+  }
+}
+</style>
+```
+
+::: justified-text
+**Molecular subtype informs treatment.**^2^ Identification of the oncogene KIT, followed by PDGFRA, as relevant to GIST formation completely changed how clinicians approach its treatment.^1,9,13^ Both encode for receptor tyrosine kinases (RTKs), surface proteins which help coordinate signals related to cell proliferation and survival.^15^ In healthy cells, this signaling is transmitted in response to relevant biological stimuli.^16^ Activating, or primary, mutations in these genetic drivers elicit ligand- independent activation in the resulting aberrant kinases.^15,17^ Oncogenesis occurs as these signals then persist in the absence of typical molecular cues, driving the unchecked cell proliferation characteristic of GIST neoplasms. ^8,9,18^ The first line of treatment for inoperable cases is often an oral RTK inhibitor, such as Imatinib,^8^ which interacts with some mutant forms of KIT and PDGFRA, slowing cancer progression by dampening abnormal signaling.^18-20^
+
+Activating mutations in KIT or PDGFRA account for 75%-85% of GISTs,^3,4,8,18^ yet roughly 20 primary drivers have been identified.^21-23^ Within the remaining 15%-25% of GISTs, SDH-deficient tumors form a notable subset.^8^ Succinate dehydrogenase (SDH) loss of function and subsequent succinate accumulation can drive oncogenesis through broad epigenetic remodeling and pseudohypoxia signaling.^24^ Lastly, SDH-competent, non-KIT/PDGFRA- subtypes may harbor mutations in oncogenes like NF1, BRAF, and RAS, along with NTRK gene fusions.^21,25,26^ For many rarer variants, treatment options are limited; there is an ongoing search for new interventions.^11^
+
+Frequencies of the most common GIST primary mutations are shown in Figure 1. Specific activating mutations can appear in “hotspots” within particular regions of a single driver. Mutations in different exons within one affected gene can modify folding and function of the resulting protein in clinically relevant ways. An oral inhibitor may faithfully bind to one aberrant form of an RTK to restrict cancer growth, yet have no effect on a tumor activated by a different driver.^26^ Imatinib, for example, interacts with key regions of the affected RTK in GISTs with KIT exon 11 and 9 mutations, as well as those with most non-D842V PDGFRA mutations.^19^ On the other hand, PDGFRA D842V mutations occur directly inside the activation loop, impairing binding,^27^ and SDH-deficient GISTs lack these aberrant kinases altogether. As a result, D842V mutation-harboring GISTs are usually unresponsive to Imatinib^9,26^ and SDH deficient GISTS are resistant entirely.^24^ Even within a group of primary tumors with shared activating mutations in KIT, treatment response varies predictably by affected exon.^28^ Cases harboring KIT exon 11 mutations usually exhibit more sensitivity to Imatinib, while those with exon 9 mutations are generally less responsive, and a higher dose is often indicated.^8,10,29^
+
+**Mutational testing helps to anticipate variation in treatment response, allowing care teams to select interventions most likely to yield favorable outcomes.**^20,30^
+:::
+
+::: {style="border-bottom: 1px solid #ccc; height: 46px; line-height: 40px; text-align: center; padding: 0 15px; margin-bottom: 10px; font-size: 1rem;"}
+**Figure 2. Age at Diagnosis for a GIST Patient Cohort**
+:::
+
+::: {style="flex: 1 1 calc(37% - 5px); min-width: 300px;"}
+```{=html}
+<div style="border: 1px solid #839496; border-radius: 8px; padding: 3px; background-color: rgba(131, 148, 150, 0.15); box-sizing: border-box;">
+  <img src="/images/raincloud.png" style="display: block; margin: 0 auto; max-width: 100%;">
+  <div style="margin-top: 5px; padding: 3px; text-align: justify; font: 200 13px sans-serif; opacity: 0.7;">This raincloud plot shows the age distribution across 469 GIST cases, with a median approaching 60. About 72% of the patients were diagnosed at 50 or older. Data was accessed in 2026 and pulled from a publicly-available clinical dataset published to the cBioPortal for Cancer Genomics website in 2023 (MSK, Clin Cancer Res 2023).</div>
+</div>
+```
+:::
+
+::: {style="height: 13px;"}
+:::
+
+::: justified-text
+**Distributions of molecular subtypes vary by patient age demographic.**^31^ Most older patients have tumors arising from spontaneous mutations in KIT and PDGFRA that develop after decades of life.^32,33^ In pediatric patients, KIT/PDGFRA mutations make up a minority of incidents; familial variants are instead more common.^34^ Inherited drivers such as SDHx, NF1, and familial KIT/PDGFRA mutations result in a predisposition to disease that is present from birth, increasing the odds of tumor growth earlier in life.^35-37^ In this way, age at diagnosis orients diagnostic testing and can streamline treatment selection.^25^ Even after controlling for its association with driver frequencies, age impacts disease management. Guidelines for surgical resection, long-term monitoring, TKI dosing, and risk-adjusted treatment all vary by age group.^38^
+:::
+
+::: {style="border-bottom: 1px solid #ccc; height: 46px; line-height: 40px; text-align: center; padding: 0 15px; margin-bottom: 10px; font-size: 1rem;"}
+**Figure 3. Anatomy of GIST Primary Tumor Locations**
+:::
+
+::: justified-text
+GIST can occur throughout the digestive tract, but originates in certain locations more often.^39^ Primary site is clinically relevant; it has implications for how a case can be treated, what symptoms may present, and whether metastasis is likely.
+:::
+
+```{ojs}
+//| include: false
+siteData = await FileAttachment("GIST_sites.json").json()
+```
+
+```{ojs}
+//| include: false
+treemapW = 500
+```
+
+```{ojs}
+//| include: false
+treemapH = 279
+```
+
+```{ojs}
+//| echo: false
+siteTree = ({
+  name: "root",
+  children: Array.from(d3.group(siteData, d => d.category_1.trim()), ([cat, rows]) => ({
+    name: cat,
+    children: rows.map(r => ({ name: r.category_2.trim(), value: r.clinical_cases }))
+  }))
+})
+```
+
+```{ojs}
+//| echo: false
+siteColors = new Map([
+  ["Stomach", "#9ce6ff"],
+  ["Small Intestine", "#8bd3ff"],
+  ["eGIST", "#81c9f5"],
+  ["Large Intestine", "#70c2f5"],
+  ["Esophagus", "#58abe3"]
+])
+```
+
+```{ojs}
+//| echo: false
+treemapChart = (W, H) => {
+  // Specify the chart’s dimensions.
+  const width = W; 
+  const height = H;  
+
+  // local stand-in for DOM.uid, bc Quarto doesn't facilitate it
+  const prefix = Math.random().toString(36).slice(2, 8);
+  let count = 0;
+  const uid = name => {
+    const id = `O-${prefix}-${name}-${++count}`;
+    return { id, href: new URL(`#${id}`, location) + "", toString() { return `url(${this.href})`; } };
+  };
+
+  // This custom tiling function adapts the built-in binary tiling function
+  // for the appropriate aspect ratio when the treemap is zoomed-in.
+  function tile(node, x0, y0, x1, y1) {
+    d3.treemapBinary(node, 0, 0, width, height);
+    for (const child of node.children) {
+      child.x0 = x0 + child.x0 / width * (x1 - x0);
+      child.x1 = x0 + child.x1 / width * (x1 - x0);
+      child.y0 = y0 + child.y0 / height * (y1 - y0);
+      child.y1 = y0 + child.y1 / height * (y1 - y0);
+    }
+  }
+
+  // Compute the layout.
+  const hierarchy = d3.hierarchy(siteTree) 
+    .sum(d => d.value)
+    .sort((a, b) => b.value - a.value);
+  const root = d3.treemap().tile(tile)(hierarchy);
+
+  // Create the scales.
+  const x = d3.scaleLinear().rangeRound([0, width]);
+  const y = d3.scaleLinear().rangeRound([0, height]);
+
+  // Formatting utilities.
+  const format = d3.format(",d");
+  const name = d => d.ancestors().reverse().slice(1).map(d => d.data.name).join("→");
+
+  // Create the SVG container.
+  const svg = d3.create("svg")
+      .attr("viewBox", [0.5, -30.5, width, height + 30])
+      .attr("width", width)
+      .attr("height", height + 30)
+      .attr("style", "max-width: 100%; height: auto;")
+      .style("font", "10px sans-serif");
+
+  // Display the root.
+  let group = svg.append("g")
+      .call(render, root);
+
+  function render(group, root) {
+    const node = group
+      .selectAll("g")
+      .data(root.children.concat(root))
+      .join("g");
+
+    node.filter(d => d === root ? d.parent : d.children)
+        .attr("cursor", "pointer")
+        .on("click", (event, d) => d === root ? zoomout(root) : zoomin(d));
+
+    node.append("title")
+        .text(d => `${name(d)}\n${format(d.value)}`);
+
+    node.append("rect")
+        .attr("id", d => (d.leafUid = uid("leaf")).id)
+.attr("fill", d => {
+  if (d === root) return "#c0ecfa";
+  let node = d;
+  while (node.parent && node.parent.parent) {
+    node = node.parent;
+  }
+  return siteColors.get(node.data.name) || "#ddd";
+})
+        .attr("stroke", "#fff");
+
+    node.append("clipPath")
+        .attr("id", d => (d.clipUid = uid("clip")).id)
+      .append("use")
+        .attr("xlink:href", d => d.leafUid.href);
+
+    node.append("text")
+    .attr("clip-path", d => d.clipUid)
+    .attr("fill", d => d === root ? "#000" : "#000")
+    .attr("font-weight", d => d === root ? "bold" : null)
+      .selectAll("tspan")
+.data(d =>
+  d === root
+    ? [" Click this banner to reset and return to top level."]
+    : d.data.name.split(/(?=[A-Z][^A-Z])/g).concat(format(d.value))
+)
+      .join("tspan")
+        .attr("x", 3)
+        .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
+        .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
+        .attr("font-weight", (d, i, nodes) => i === nodes.length - 1 ? "normal" : null)
+        .text(d => d);
+
+    group.call(position, root);
+  }
+
+  function position(group, root) {
+    group.selectAll("g")
+        .attr("transform", d => d === root ? `translate(0,-30)` : `translate(${x(d.x0)},${y(d.y0)})`)
+      .select("rect")
+        .attr("width", d => d === root ? width : x(d.x1) - x(d.x0))
+        .attr("height", d => d === root ? 30 : y(d.y1) - y(d.y0));
+  }
+
+  // When zooming in, draw the new nodes on top, and fade them in.
+  function zoomin(d) {
+    const group0 = group.attr("pointer-events", "none");
+    const group1 = group = svg.append("g").call(render, d);
+
+    x.domain([d.x0, d.x1]);
+    y.domain([d.y0, d.y1]);
+
+    svg.transition()
+        .duration(750)
+        .call(t => group0.transition(t).remove()
+          .call(position, d.parent))
+        .call(t => group1.transition(t)
+          .attrTween("opacity", () => d3.interpolate(0, 1))
+          .call(position, d));
+  }
+
+  // When zooming out, draw the old nodes on top, and fade them out.
+  function zoomout(d) {
+    const group0 = group.attr("pointer-events", "none");
+    const group1 = group = svg.insert("g", "*").call(render, d.parent);
+
+    x.domain([d.parent.x0, d.parent.x1]);
+    y.domain([d.parent.y0, d.parent.y1]);
+
+    svg.transition()
+        .duration(750)
+        .call(t => group0.transition(t).remove()
+          .attrTween("opacity", () => d3.interpolate(1, 0))
+          .call(position, d))
+        .call(t => group1.transition(t)
+          .call(position, d.parent));
+  }
+
+  return svg.node();
+}
+```
+
+::::: {style="display: flex; flex-wrap: wrap; gap: 5px; align-items: center;"}
+::: {style="flex: 1 1 calc(60% - 5px); min-width: 320px;"}
+```{ojs}
+//| echo: false
+{
+  const wrap = html`<div class="gist-treemap" style="
+    width: ${treemapW + 21}px; max-width: 100%; margin-right: auto; margin-left: auto; padding: 7px;
+    border: 1px solid #839496; border-radius: 8px; background: rgba(131, 148, 150, 0.15);">
+    <div style="text-align: center; font: 200 15px sans-serif; margin-bottom: 7.5px; color: #873f2b;"> This is an interactive visualization. Click the categories below to drill down.</div>
+    <div class="plot" style="margin: 3 auto;"></div>
+    <div style="margin-top: 7.5px; text-align: left; font: 400 14px sans-serif; opacity: 1;">Figure 3a. Primary Site Frequency in a GIST Patient Group</div><div style="margin-top: 5px; text-align: justify; font: 200 13px sans-serif; opacity: 0.7;">This treemap shows the location of primary tumors across two combined clinical cohorts (n=621). De-identified patient data was released in 2023 and is accessible from cBioPortal for Cancer Genomics. As expected, gastric tumors make up the largest subset (63%). Small intestinal tumors (22%) and eGIST cases (11%) followed. In smaller numbers, colorectal primary tumors were 3% of the total and esophageal were 1%. These calculated frequencies place the dataset roughly in line with broader expectations based on established trends for this sarcoma group.</div>
+  </div>`;
+
+  try { wrap.querySelector(".plot").append(treemapChart(treemapW, treemapH)); }
+  catch (e) {
+    wrap.querySelector(".plot").append(html`<pre style="color:#c0392b;white-space:pre-wrap;font-size:12px">treemap failed: ${e.message}</pre>`);
+  }
+  return wrap;
+}
+```
+:::
+
+::: {style="flex: 1 1 calc(37% - 5px); min-width: 300px;"}
+```{=html}
+<div style="border: 1px solid #839496; border-radius: 8px; padding: 3px; background-color: rgba(131, 148, 150, 0.15); box-sizing: border-box;">
+  <img src="/images/anatomyfig%20for%20site.png" style="display: block; margin: 0 auto; max-width: 100%;">
+  <div style="margin-top: 2px; padding: 3px; text-align: left; font: 400 14px sans-serif; opacity: 1;">Figure 3b. General Primary Site Frequencies</div>
+  <div style="margin-top: 0px; padding: 3px; text-align: justify; font: 200 13px sans-serif; opacity: 0.7;">The percentage ranges above are epidemiological estimates. They do not reflect a single clinical data set, but rather, derive from global established trends.</div>
+</div>
+```
+:::
+:::::
+
+::: {style="height: 13px;"}
+:::
+
+::: justified-text
+Some GISTs (about 15%-47%) are metastatic upon discovery^2^, and primary site may be established through structural and molecular evaluation. Identification of primary site for localized GISTs is comparatively more straightforward. A rare minority of cases present as disseminated GIST, wherein a primary site cannot be determined.^46^ For the majority of cases that can be connected to a single location of origin, tumor site impacts diagnostic workflow and risk stratification. Even after controlling for mitotic rate and tumor size, certain locations are associated with more aggressive disease.^31,41^ Site of origin corresponds with distinct driver mutation frequencies. For example, gastric GISTs present with KIT exon 11 mutations more often, while KIT exon 9 mutations are primarily found in the small intestine.^42,43^ Considering this pattern helps steer diagnostic workflow and predict effective treatments.^2,42^ Evaluating driver mutations and primary site as both independent and connected variables creates a more nuanced picture of GIST.^39^ Clinical next steps for sites such as the stomach are more established, while protocols for rarer subtypes, like esophageal tumors, are being clarified.^44^
+:::
+
+::: {style="border-bottom: 1px solid #ccc; height: 120x; line-height: 23px; text-align: justify; padding: 0 15px; margin-bottom: 10px; font-size: 1rem;"}
+**GIST is recognized as a solid-tumor model for precision oncology. Molecular subtype intersects with other disease variables to guide clinical strategy from diagnosis throughout treatment. Evaluating heterogeneity within this sarcoma class offers a more complete picture of each GIST case and of the disease as a whole.**
+:::
+
+::: justified-text
+Gastrointestinal stromal tumors (GIST) present with substantial case-by-case diversity across multiple interrelated factors. Genetic subtype determines which therapies a tumor will most likely respond to at the outset, while age and primary site each offer clues to that subtype and independently shape risk assessment and clinical protocol. Honoring this diversity enables more precise treatment of this rare cancer, and emerging tools like predictive deep learning have the potential to increase that precision by offering a sharper understanding of GIST molecular diversity.
+:::
+
+```{=html}
+<details>
+<summary>References</summary>
+  <p>1. Kitamura Y. Gastrointestinal stromal tumors: past, present, and future. Journal of Gastroenterology. 2008;43(7):499-508. doi:10.1007/s00535-008-2200-y  
+  <br> 
+  <br> 
+2.  Cicala CM, Bauer S, Heinrich MC, Serrano C. Gastrointestinal Stromal Tumor: Current Approaches and Future Directions in the Treatment of Advanced Disease. Hematology/Oncology Clinics of North America. 2025;39(4):773-784. doi:10.1016/j.hoc.2025.04.006 
+<br>
+<br>
+3.  Burch J, Ahmad I. Gastrointestinal Stromal Cancer. PubMed. 2020. Accessed September 22, 2026. https://www.ncbi.nlm.nih.gov/books/NBK554541/ <br> 
+<br>
+4.  Waidhauser J, Bornemann A, Trepel M, Märkl B. Frequency, localization, and types of gastrointestinal stromal tumor-associated neoplasia. World Journal of Gastroenterology. 2019;25(30):4261-4277. doi:10.3748/wjg.v25.i30.4261 
+<br>
+<br> 
+5.  López-Pingarrón L, Almeida H, Soria-Aznar M, et al. Interstitial Cells of Cajal and Enteric Nervous System in Gastrointestinal and Neurological Pathology, Relation to Oxidative Stress. Current Issues in Molecular Biology. 2023;45(4):3552-3572. doi:10.3390/cimb45040232 
+<br> 
+<br>
+6.  Gamboa AC, Gronchi A, Cardona K. Soft‐tissue sarcoma in adults: An update on the current state of histiotype‐specific management in an era of personalized medicine. CA: A Cancer Journal for Clinicians. 2020;70(3):200-229. doi:10.3322/caac.21605
+<br> 
+<br>
+7.  von Mehren M, Joensuu H. Gastrointestinal Stromal Tumors. Journal of Clinical Oncology: Official Journal of the American Society of Clinical Oncology. 2018;36(2):136-143. doi:10.1200/JCO.2017.74.9705
+<br> 
+<br>
+8.  Song IH, Ahn S, Kim HD, et al. Gastrointestinal Stromal Tumor: History, Molecular Subtypes, and Risk Stratification. J Gastric Cancer. 2026;26(2):202-218. doi:10.5230/jgc.2026.26.e7
+<br> 
+<br>
+9.  Szucs Z, Thway K, Fisher C, et al. Molecular subtypes of gastrointestinal stromal tumors and their prognostic and therapeutic implications. Future Oncology. 2017;13(1):93-107. doi:10.2217/fon-2016-0192
+<br> 
+<br>
+10. Ho SYA, Tok AHS, Han HQMK, Samol J, Shelat VG. Why precision oncology works: lessons from gastrointestinal stromal tumours. Explor Target Antitumor Ther. 2026;7:1002378. doi:10.37349/etat.2026.1002378
+<br> 
+<br>
+11. Qasim H, Abu Shugaer M, Awawdeh AN, et al. Gastrointestinal Stromal Tumors: Histopathological Spectrum, Molecular Subtypes, and Implications for Targeted Therapy. Cureus. 2026;18(1):e101180. doi:10.7759/cureus.101180
+<br> 
+<br>
+12. Comandone A, Boglione A. The importance of mutational status in prognosis and therapy of GIST. Recenti Prog Med. 2015;106(1):17-22. doi:10.1701/1740.18950
+<br> 
+<br>
+13. Blay JY, Le Cesne A, Cassier PA, Ray-Coquard IL. Gastrointestinal stromal tumors (GIST): a rare entity, a tumor model for personalized therapy, and yet ten different molecular subtypes. Discovery medicine. 2012;13(72):357-367. PMID: 22642917. https://pubmed.ncbi.nlm.nih.gov/22642917/
+<br> 
+<br>
+14. Florou V, Trent JC, Wilky BA. Precision medicine in gastrointestinal stromal tumors. Discov Med. 2019 Nov-Dec;28(155):267-276. PMID: 32053767. https://pubmed.ncbi.nlm.nih.gov/32053767/
+<br> 
+<br>
+15. Sheikh E, Tran T, Vranic S, Levy A, Bonfil RD. Role and Significance of c-KIT Receptor Tyrosine Kinase in Cancer: A Review. Bosnian Journal of Basic Medical Sciences. 2022;22(5). doi:10.17305/bjbms.2021.7399
+<br> 
+<br>
+16. Jingnuo D, Huachuan Z, Da Z, Zhi D, Yan C, Fazhi Z. Gastrointestinal Stromal Tumors: Molecular Mechanisms of Drug Resistance and Advances in Therapeutic Strategies. J Gastroenterol Hepatol. 2026;41(4):1191-1203. doi:10.1111/jgh.70306
+<br> 
+<br>
+17. Corless CL. Gastrointestinal stromal tumors: what do we know now? Modern Pathology. 2014;27(S1):S1-S16. doi:10.1038/modpathol.2013.173
+<br> 
+<br>
+18. Bauer S, George S, von Mehren M, Heinrich MC. Early and Next-Generation KIT/PDGFRA Kinase Inhibitors and the Future of Treatment for Advanced Gastrointestinal Stromal Tumor. Front Oncol. 2021;11:672500. doi:10.3389/fonc.2021.672500
+<br> 
+<br>
+19. Xiao XH, Zhang QS, Hu JY, Zhang YX, Song H. Tyrosine Kinase Inhibitors for Gastrointestinal Stromal Tumor After Imatinib Resistance. Pharmaceutics. 2025;17(7):923. doi:10.3390/pharmaceutics17070923
+<br> 
+<br>
+20. Lopes LF, Bacchi CE. Imatinib treatment for gastrointestinal stromal tumour (GIST). Journal of Cellular and Molecular Medicine. 2009;14(1-2):42-50. doi:10.1111/j.1582-4934.2009.00983.x
+<br> 
+<br>
+21. Deepak Saravanan, Mohan M. Genetic mutations in the molecular pathogenesis of gastrointestinal stromal tumor. Journal of Clinical and Experimental Gastroenterology. 2022;1(1):37-44. doi:10.46439/gastro.1.008
+<br> 
+<br>
+22. Li K, Cheng H, Li Z, et al. Genetic progression in gastrointestinal stromal tumors: mechanisms and molecular interventions. Oncotarget. 2017;8(36):60589-60604. doi:10.18632/oncotarget.16014
+<br> 
+<br>
+23. Maha Alkhuziem, Burgoyne AM, Fanta PT, Tang CM, Sicklick JK. The Call of “The Wild”-Type GIST: It’s Time for Domestication. Journal of the National Comprehensive Cancer Network. 2017;15(5):551-554. doi:10.6004/jnccn.2017.0057
+<br> 
+<br>
+24. Killian JK, Kim SY, Miettinen M, et al. Succinate Dehydrogenase Mutation Underlies Global Epigenomic Divergence in Gastrointestinal Stromal Tumor. Cancer Discovery. 2013;3(6):648-657. doi:10.1158/2159-8290.CD-13-0092
+<br> 
+<br>
+25. Boikos SA, Pappo AS, Killian JK, et al. Molecular Subtypes of KIT/PDGFRA Wild-Type Gastrointestinal Stromal Tumors: A Report From the National Institutes of Health Gastrointestinal Stromal Tumor Clinic. JAMA oncology. 2016;2(7):922-928. doi:10.1001/jamaoncol.2016.0256
+<br> 
+<br>
+26. Abudurexiti N, Lou Y, Wu M, et al. The Mechanisms of Imatinib Resistance in Gastrointestinal Stromal Tumours: Theoretical Basis and Therapeutic Aspect. J Cell Mol Med. 2025;29(21):e70931. doi:10.1111/jcmm.70931
+<br> 
+<br>
+27. Rizzo A, Pantaleo MA, Astolfi A, Indio V, Nannini M. The Identity of PDGFRA D842V-Mutant Gastrointestinal Stromal Tumors (GIST). Cancers. 2021;13(4):705. doi:10.3390/cancers13040705
+<br>
+<br> 
+28. Heinrich M, Corless CL, Demetri G D, et al. Kinase Mutations and Imatinib Response in Patients With Metastatic Gastrointestinal Stromal Tumor. Journal of Clinical Oncology. 2003;21(23):4342-4349. doi:10.1200/jco.2003.04.190
+<br> 
+<br>
+29. Yim E, An HJ, Cho U, et al. Two different KIT mutations may lead to different responses to imatinib in metastatic gastrointestinal stromal tumor. Korean J Intern Med. 2018;33(2):432-434. doi:10.3904/kjim.2015.295
+<br> 
+<br>
+30. Oppelt PJ, Hirbe AC, Van Tine BA. Gastrointestinal stromal tumors (GISTs): point mutations matter in management, a review. J Gastrointest Oncol. 2017;8(3):466-473. doi:10.21037/jgo.2016.09.15
+<br> 
+<br>
+31. Miettinen M, Lasota J. Gastrointestinal Stromal Tumors: Review on Morphology, Molecular Pathology, Prognosis, and Differential Diagnosis. Archives of Pathology & Laboratory Medicine. 2006;130(10):1466-1478. doi:10.5858/2006-130-1466-gstrom
+<br> 
+<br>
+32. Dudzisz-Śledź M, Klimczak A, Bylina E, Rutkowski P. Treatment of Gastrointestinal Stromal Tumors (GISTs): A Focus on Younger Patients. Cancers (Basel). 2022;14(12):2831. doi:10.3390/cancers14122831
+<br> 
+<br>
+33. IJzerman NS, Drabbe C, den Hollander D, et al. Gastrointestinal Stromal Tumours (GIST) in Young Adult (18-40 Years) Patients: A Report from the Dutch GIST Registry. Cancers (Basel). 2020;12(3):730. doi:10.3390/cancers12030730
+<br> 
+<br>
+34. Quiroz HJ, Willobee BA, Sussman MS, et al. Pediatric gastrointestinal stromal tumors—a review of diagnostic modalities. Translational gastroenterology and hepatology. 2018;3:54-54. doi:10.21037/tgh.2018.07.08
+<br> 
+<br>
+35. Postow MA, Robson ME. Inherited gastrointestinal stromal tumor syndromes: mutations, clinical features, and therapeutic implications. Clin Sarcoma Res. 2012;2(1):16. doi:10.1186/2045-3329-2-16
+<br> 
+<br>
+36. Brodey A, Valentinos Kounnis, Hawkes L, Jones RL, McVeigh TP, Cojocaru E. KIT-Associated Familial GIST Syndrome: Response to Tyrosine Kinase Inhibitors and Implications for Risk Management.The Oncologist. 2022;27(8):615-620. doi:10.1093/oncolo/oyac120
+<br>
+<br> 
+37. Agaram NP, Laquaglia MP, Ustun B, et al. Molecular characterization of pediatric gastrointestinal stromal tumors. Clin Cancer Res. 2008;14(10):3204-3215. doi:10.1158/1078-0432.CCR-07-1984
+<br> 
+<br>
+38. PDQ® Pediatric Treatment Editorial Board. PDQ Childhood Gastrointestinal Stromal Tumors Treatment. Bethesda, MD: National Cancer Institute. Updated 09/05/2024. Available at: https://www.cancer.gov/types/soft-tissue-sarcoma/hp/child-gist-treatment-pdq. PMID: 31661204
+<br> 
+<br>
+39. Miettinen M, Lasota J. Gastrointestinal stromal tumors: Pathology and prognosis at different sites. Seminars in Diagnostic Pathology. 2006;23(2):70-83. doi:10.1053/j.semdp.2006.09.001
+<br> 
+<br>
+40. Gheorghe G, Bacalbasa N, Ceobanu G, et al. Gastrointestinal Stromal Tumors—A Mini Review. Journal of Personalized Medicine. 2021;11(8):694. doi:10.3390/jpm11080694
+<br> 
+<br>
+41. DeMatteo RP, Gold JS, Saran L, et al. Tumor mitotic rate, size, and location independently predict recurrence after resection of primary gastrointestinal stromal tumor (GIST). Cancer. 2008;112(3):608-615. doi:10.1002/cncr.23199
+<br> 
+<br>
+42. Mei L, Smith SC, Faber AC, et al. Gastrointestinal Stromal Tumors: The GIST of Precision Medicine. Trends in Cancer. 2018;4(1):74-91. doi:10.1016/j.trecan.2017.11.006
+<br>
+<br> 
+43. Napolitano A, Thway K, Smith MJ, Huang PH, Jones RL. KIT Exon 9-Mutated Gastrointestinal Stromal Tumours: Biology and Treatment. Chemotherapy. 2022;67(2):81-90. doi:10.1159/000521751
+<br> 
+<br>
+44. Usama F, Rasikh R, Hassam K, et al. An update on gastrointestinal stromal tumors (GISTs) with a focus on extragastrointestinal stromal tumors (EGISTs). Gastroenterol Rep (Oxf). 2025;13:goaf068. doi:10.1093/gastro/goaf068
+<br> 
+<br>
+45. Li C, Yang KL, Wang Q, et al. Clinical features of multiple gastrointestinal stromal tumors: A pooling analysis combined with evidence and gap map. World J Gastroenterol. 2020;26(47):7550-7567. doi:10.3748/wjg.v26.i47.7550
+<br> 
+<br>
+46. PDQ® Adult Treatment Editorial Board. PDQ Gastrointestinal Stromal Tumors Treatment. Bethesda, MD: National Cancer Institute. Updated 12/13/2024. Available at: https://www.cancer.gov/types/soft-tissue-sarcoma/hp/gist-treatment-pdq.  PMID: 26389157
+<br>
+</p>
+</details>
+```

@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  page-footer: 
+    center: |
+     Made with <img src="/images/quarto-logo.png" alt="Quarto" width="50"/> <span>and<span> <img src="/images/R-logo.png" alt="“R”" width="14"/> © 2026
+  favicon: images/favicon.ico
+  navbar:
+    title: "Home"
+    logo: images/logo.png
+    logo-alt: "xyz"
+    collapse: false
+    left: 
+    - text: "Open Site Menu"
+      menu:
+      - text: "Projects"
+        href: projects/Listings.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "About"
+        href: about.qmd
+
+format:
+  html:
+    theme:
+      dark: styles/mixinDark.scss
+      light: styles/mixinLight.scss
+    css:
+      - styles.css
+    toc: true
+editor: visual
+

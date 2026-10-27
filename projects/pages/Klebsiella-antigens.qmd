@@ -1,0 +1,73 @@
+---
+title: "Diversity of *Klebsiella* Surface Antigens O and K"
+description: "Graphic Figures & Accompanying Vignette, Last edited: 2025"
+image: "/images/test klebs.png"
+order: 2
+page-layout: full
+css: styles.css
+---
+
+::: justified-text
+Many *Klebsiella* species can be found in low numbers in a healthy human microbiome;^1,2^ still, opportunistic agents within the genus, including members of the *Klebsiella pneumoniae* species complex, *Klebsiella oxytoca,* and several others, represent long-standing threats to immunocompromised and otherwise vulnerable individuals.^4^ These conditional pathogens are causative agents of a range of healthcare-associated infections, including nosocomial pneumonia, catheter-associated urinary tract infections (CAUTIs), surgical site and wound abscesses, and fatal sepsis.^3,4^
+:::
+
+![](/images/klebsiella1.png){fig-align="center"}
+
+::: justified-text
+In recent years, emerging hyper-virulent (hvKp) and multi-drug resistant (MDR/cKp) *Klebsiella* strains have also begun to affect immunocompetent individuals, and now pose a mounting worldwide health concern.^1-8^ These infectious *Klebsiella* species possess an arsenal of virulence factors that contribute to pathogenicity and assist in evasion of the host immune response.^2,3-5^
+
+*Klebsiella* K antigens (capsular polysaccharides) are a diverse group of surface molecules containing 77-79 serologically-characterized structural variations.^5^ Broadly, K antigens help protect the bacteria from the host immune response at multiple levels, helping the bacteria to avoid detection, evade cell-mediated immunity, and block innate immune signaling cascades.^4,7^ The K antigen group has a hand in reducing engulfment of the bacteria by epithelial cells, avoiding phagocytosis by macrophages and neutrophils, interrupting NF-kB signaling, and triggering cell death and cytotoxicity in host cells.^4,6^ In hvKp strains specifically, key K antigens, such as K1 and K2 (Figures 1 and 2), help the opportunistic pathogen evade clearance by the host by conferring increased resistance against two of these facets of the immune response: complement-mediated killing and phagocytosis.^6^ 
+:::
+
+![](/images/klebsiella2.png){fig-align="center"}
+
+::: justified-text
+The O-specific polysaccharides (OPS), or O antigens, are a group containing around 9-13 structural variations, although O1, O2, and O3 (Figure 2) are identified in about 80% of infections.^5^ In tandem with CPS, O-specific polysaccharides help counter the host immune response by suppressing TLR-signaling and facilitating resistance to complement-mediated killing through interference with C3b deposition.^6,7^ The O1 variant is often seen in hvKp infections along with K1 and K2; at present, O1, O2, O3, and O5 are represented across emerging MDR/cKp strains.^6^ Altogether, the structure of these factors varies meaningfully across distinct strains, contributing in part to the rapidly developing pathologies seen in MDR, hvKp, and convergent (MDR-hvKp) species.^6-8^
+
+Over the past two decades, multi-drug resistance has been increasingly observed as a regular and concerning feature of severe human infection by opportunistic and hyper-virulent *Klebsiella* species.^5,6^ The spread of drug resistance forebodes an eventual narrowing of treatment options for *Klebsiella* infection, while, in parallel, an increase in hyper-virulence abets a concurrent widening of the susceptible population.^8^ The role of surface antigenic variation in individuating MDR and HV-specific pathology warrants further characterization of these rapidly-evolving virulence factors.^4,7,8^ Exploration of novel therapeutic agents and vaccines targeting these antigens denotes a promising strategy to preempt this rising global health threat.^6,8^
+:::
+
+```{=html}
+<details>
+<summary>References</summary>
+  <p>1. Abbas R, Chakkour M, Zein H, et al. General Overview of Klebsiella pneumonia: Epidemiology and the Role of Siderophores in Its Pathogenicity. Biology. 2024;13 (2):78-78. https://doi.org/10.3390/biology13020078 
+  <br> 
+  <br> 
+2. Ashurst JV, Dawson A. Klebsiella Pneumonia. Nih.gov. Published July 20, 2023. https://www.ncbi.nlm.nih.gov/books/NBK519004/
+<br>
+<br>
+3. Bengoechea JA, Sa Pessoa J. Klebsiella pneumoniae infection biology: living to counteract host defences. FEMS microbiology reviews. 2019;43(2):123-144. https://doi.org/10.1093/femsre/fuy043 
+<br> 
+<br>
+4. Dong N, Yang X, Chan EWC, Zhang R, Chen S. Klebsiella species: Taxonomy, hypervirulence and multidrug resistance. EBioMedicine. 2022;79(103998):103998. https://doi.org/10.1016/j.ebiom.2022.103998
+<br>
+<br> 
+5. Follador R, Heinz E, Thomson NR, et al. The diversity of Klebsiella pneumoniae surface polysaccharides. Microbial Genomics. 2016;2(8). https://doi.org/10.1099/mgen.0.000073
+<br> 
+<br>
+6. Hetta HF, Alanazi FE, Ali MAS, et al. Hypervirulent Klebsiella pneumoniae: Insights into Virulence, Antibiotic Resistance, and Fight Strategies Against a Superbug. Pharmaceuticals. 2025;18(5):724. https://doi.org/10.3390/ph18050724
+<br> 
+<br>
+7. Nguyen TNT, Howells G, Short FL. How Klebsiella pneumoniae controls its virulence. PLoS pathogens. 2025;21(9):e1013499. https://doi.org/10.1371/journal.ppat.1013499
+<br> 
+<br>
+8. Zheng Y, Zhu X, Ding C, et al. Multidrug-resistant hypervirulent Klebsiella pneumoniae: an evolving superbug. Future microbiology. 2025;20(6):499-511. https://doi.org/10.1080/17460913.2025.2482478
+<br> 
+<br>
+9. Clarke BR, Ovchinnikova OG, Kelly SD, et al. Molecular basis for the structural diversity in serogroup O2-antigen polysaccharides in Klebsiella pneumoniae. Journal of Biological Chemistry. 2018;293(13):4666-4679. doi:https://doi.org/10.1074/jbc.ra117.000646
+<br> 
+<br>
+10. Opoku-Temeng C, Kobayashi SD, DeLeo FR. Klebsiella pneumoniae capsule polysaccharide as a target for therapeutics and vaccines. Computational and Structural Biotechnology Journal. 2019;17:1360-1366. doi:https://doi.org/10.1016/j.csbj.2019.09.011
+<br> 
+<br>
+11. Wang Y, Liu H, Wang B, et al. Recent advances in the biosynthesis of polysaccharide-based antimicrobial glycoconjugate vaccines. Frontiers in Microbiology. 2025;15. doi:https://doi.org/10.3389/fmicb.2024.1457908
+<br> 
+<br>
+</p>
+</details>
+```
+
+
+::: justified-text
+The 3D, space-filling drawings of the O and K antigens were illustrated from representative structures available in the database [K-PAM: Klebsiella species serotype predictor and surface antigens modeler](https://www.iith.ac.in/K-PAM/home.html), which contains further references within. The symbolic representations of the diversity of structures were obtained both from this database and from Clarke et al (2018). Opoku-Temeng et al. (2019) and Wang et al. (2024) provided insight into the localization of both antigen classes, and nomenclature was derived from [Kaptive 2.0](https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.000800?crawler=true.).
+:::

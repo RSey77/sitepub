@@ -1,0 +1,63 @@
+---
+title: "Additional Site References"
+page-layout: full
+sidebar: false
+toc: false
+format: 
+  html:
+    link-external-newwindow: true
+    tbl-colwidths: [40, 40, 20]
+---
+
+::: {.list-table}
+- - []{colspan=2} Website Section
+  - Citations
+
+- - []{rowspan=5} Homepage Visual Sources
+  - 1.
+  - placeholder, pending citation update
+
+- - 2.
+  - placeholder, pending citation update
+  
+- - 3.
+  - Fifani, B., Steels, S., Helmus, C., Delacuvellerie, A., Deracinois, B., Phalip, V., Delvigne, F., and Jacques, P. (2022). Coculture of Trichoderma Harzianum and bacillus velezensis based on metabolic cross-feeding modulates lipopeptide production. Microorganisms 10, 1059. https://doi.org/10.3390/microorganisms10051059.
+
+- - 4.
+  - placeholder
+  
+- - 5.
+  - placeholder, pending citation update
+  
+- - []{rowspan=3} Project Headers Visual Sources
+  - 1.
+  - Yuzawa, S., Opatowsky, Y., Zhang, Z., Mandiyan, V., Lax, I., and Schlessinger, J. (2007). Structural Basis for Activation of the Receptor Tyrosine Kinase KIT by Stem Cell Factor. Cell 130, 323–334. https://doi.org/10.1016/j.cell.2007.05.055.
+
+- - 2.
+  - Krimmer, S.G., Bertoletti, N., Suzuki, Y., Katic, L., Mohanty, J., Shu, S., Lee, S., Lax, I., Mi, W., and Schlessinger, J. (2023). Cryo-EM analyses of KIT and oncogenic mutants reveal structural oncogenic plasticity and a target for therapeutic intervention. Proceedings of the National Academy of Sciences of the United States of America 120, e2300054120. https://doi.org/10.1073/pnas.2300054120.
+  
+- - 3.
+  - Sheikh, E., Tran, T., Vranic, S., Levy, A., and Bonfil, R.D. (2022). Role and Significance of c-KIT Receptor Tyrosine Kinase in Cancer: A Review. Bosnian Journal of Basic Medical Sciences 22. https://doi.org/10.17305/bjbms.2021.7399.
+
+  
+- - []{rowspan=7} Site Build Documentation
+  - 1.
+  - Posit, PBC (2026). Quarto documentation (Posit, PBC). https://quarto.org/docs/.
+
+- - 2.
+  - Çetinkaya-Rundel, M., and Wickham, C. (2025). Quarto: The Practical Guide. Quarto-tdg.org. https://quarto-tdg.org/.
+  
+- - 3.
+  - Bostock, M., Ogievetsky, V., and Heer, J. (2011). D3: Data-Driven Documents. IEEE Trans. Vis. Comput. Graph. 17, 2301–2309. doi.org
+  
+- - 4.
+  - Bostock, M. (2025). Zoomable sunburst. Observable. https://observablehq.com/@d3/zoomable-sunburst
+  
+- - 5.
+  - Bostock, M. (2024). Zoomable treemap. Observable. https://observablehq.com/@d3/zoomable-treemap
+  
+- - 6.
+  - Bostock, M. (2024). Zoomable icicle. Observable. https://observablehq.com/@d3/zoomable-icicle
+- - 7.
+  - Otto, M., and Bootstrap Team. (2026). Bootstrap Icons (Version 5). Bootstrap. https://icons.getbootstrap.com/
+:::
