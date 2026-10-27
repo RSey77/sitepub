@@ -54,7 +54,7 @@ main.content {
   color: #a39c93;
   text-decoration: none;
   font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 400;
   border-radius: 99px;
   border: 0.5px solid #a39c93;

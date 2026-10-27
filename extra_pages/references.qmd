@@ -15,19 +15,19 @@ format:
 
 - - []{rowspan=5} Homepage Visual Sources
   - 1.
-  - placeholder, pending citation update
+  - Samuels, G. J., Ismaiel, A., Bon, M.-C., De Respinis, S., & Petrini, O. (2010). Trichoderma asperellum sensu lato consists of two cryptic species. Mycologia, 102(4), 944–966. https://doi.org/10.3852/09-243
 
 - - 2.
-  - placeholder, pending citation update
+  - Qiao, M., Du, X., Zhang, Z., Xu, J., & Yu, Z. (2018). Three new species of soil-inhabiting Trichoderma from southwest China. MycoKeys, 44, 63–80. https://doi.org/10.3897/mycokeys.44.30295
   
 - - 3.
   - Fifani, B., Steels, S., Helmus, C., Delacuvellerie, A., Deracinois, B., Phalip, V., Delvigne, F., and Jacques, P. (2022). Coculture of Trichoderma Harzianum and bacillus velezensis based on metabolic cross-feeding modulates lipopeptide production. Microorganisms 10, 1059. https://doi.org/10.3390/microorganisms10051059.
 
 - - 4.
-  - placeholder
+  - Tang, G.-T., Li, Y., Zhou, Y., Zhu, Y.-H., Zheng, X.-J., Chang, X.-L., Zhang, S.-R., & Gong, G.-S. (2022). Diversity of trichoderma species associated with soil in the zoige alpine wetland of Southwest China. Scientific Reports, 12(1). https://doi.org/10.1038/s41598-022-25223-0
   
 - - 5.
-  - placeholder, pending citation update
+  - Mukhopadhyay, R., & Kumar, D. (2020). Trichoderma: A beneficial antifungal agent and insights into its mechanism of biocontrol potential. Egyptian Journal of Biological Pest Control, 30(1). https://doi.org/10.1186/s41938-020-00333-x
   
 - - []{rowspan=3} Project Headers Visual Sources
   - 1.

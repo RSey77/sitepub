@@ -20,14 +20,14 @@ format:
   - **2023**
   - 
     1.  Pending citation update: A systems serology study investigating correlates of protection against *Vibrio cholerae* infection.
-  - [![](images/Cite1.png)](/pubs/Systems serology Vibrio cholerae disease.pdf){.no-icon target="_blank"}
+  - [![](images/Cite1.png)](/pubs/Systems%20serology%20Vibrio%20cholerae%20disease.pdf){.no-icon target="_blank"}
 
 - 
 
   - **2022**
   - 
     2.  Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells.
-  - [![](images/Cite2.png)](/pubs/High-throughput ID RNA LEs in neuronal cells.pdf){.no-icon target="_blank"}
+  - [![](images/Cite2.png)](/pubs/High-throughput%20ID%20RNA%20LEs%20in%20neuronal%20cells.pdf){.no-icon target="_blank"}
 
 - 
 
@@ -61,24 +61,7 @@ format:
 
     6.  Pending citation update: A study investigating whether the presence of *Vibrio cholerae*-killing antibodies in young children predicts protection from future infection, as in older patients.
 
-  - [![](images/Cite6.png)](/pubs/Vibriocidal Titer Protection From Cholera in Children.pdf){.no-icon target="_blank"}
+  - [![](images/Cite6.png)](/pubs/Vibriocidal%20Titer%20Protection%20From%20Cholera%20in%20Children.pdf){.no-icon target="_blank"}
 :::
 
-::: {style="max-width: 500px; font-size: 1.2em; font-style: bold; margin: 5px auto; text-align: center; border: none; padding: 0px; background-color: transparent;"}
-Abstracts & Presentations
-:::
 
-::: {.list-table tbl-colwidths="[10, 45, 15]"}
-- 
-
-  - Year
-  - Citation
-  - View
-
-- 
-
-  - **2018**
-  - 
-    1.  Pending citation update: A preliminary presentation examining vibriocidal antibody titers in children, and whether these are associated with protection against *V. cholerae* infection similarly across age strata.
-  - [![](images/Cite7.png)](/pubs/Abstract Vibriocidal Titer Protection in Children Compared to Adults.pdf){.no-icon target="_blank"}
-:::

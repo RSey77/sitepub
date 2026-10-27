@@ -9,7 +9,6 @@ website:
   favicon: images/favicon.ico
   navbar:
     title: "Home"
-    site-url: "https://rsey77.github.io/sitepub/"
     logo: images/logo.png
     logo-alt: "xyz"
     collapse: false
@@ -28,6 +27,7 @@ format:
     theme:
       dark: styles/mixinDark.scss
       light: styles/mixinLight.scss
+    respect-user-color-scheme: true
     css:
       - styles.css
     toc: true

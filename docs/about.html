@@ -223,7 +223,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = true;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -234,6 +235,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -306,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
 <div style="max-width: 500px; font-size: 0.8em; font-style: italic; margin: 10px auto; text-align: justify; border: 0px solid #ccc; padding: 10px; border-radius: 5px; background-color: transparent;">
 <p>All graphic figures on this website were created by the site author unless otherwise stated.</p>
 </div>
-<p><a href="./references.html" style="text-decoration: none;">Additional site references</a></p>
+<p><a href="./extra_pages/references.html" style="text-decoration: none;">Additional site references</a></p>
 
 
 </main> 
@@ -316,7 +325,7 @@ ul.task-list li input[type="checkbox"] {
     <i class="bi bi-envelope"></i>
      <span class="about-link-text">Email</span>
   </a>
-  <a href="/pubs/RS_CV_2026.pdf" class="about-link" rel="" target="_blank">
+  <a href="/extra_pages/CV.html" class="about-link" rel="" target="_blank">
     <i class="bi bi-file-earmark-person-fill"></i>
      <span class="about-link-text">View CV</span>
   </a>

@@ -224,7 +224,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = true;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -235,6 +236,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -296,14 +305,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div style="max-width: 500px; margin: 10px auto; text-align: justify; border: 0px solid #ccc; padding: 6px; border-radius: 5px; background-color: transparent;">
+<p>To view professional experience in more detail: <a href="./extra_pages/CV.html">See CURRICULUM VITAE</a></p>
+</div>
 <section id="work-samples" class="level4" style="font-size: 1.1em; font-weight: Semi-Bold; margin-bottom: 0px;">
 <h4 style="font-size: 1.1em; font-weight: Semi-Bold; margin-bottom: 0px;" class="anchored" data-anchor-id="work-samples">Work Samples</h4>
 </section>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 75%">
-</colgroup>
 <tbody>
 <tr class="odd">
 <td>2026</td>
@@ -337,33 +345,33 @@ ul.task-list li input[type="checkbox"] {
 <td><ol type="1">
 <li>Pending citation update: A systems serology study investigating correlates of protection against <em>Vibrio cholerae</em> infection.</li>
 </ol></td>
-<td><a href="./pubs/RS_CV_2026.pdf" class="no-icon" target="_blank"><img src="images/Cite1.png" class="img-fluid"></a></td>
+<td><a href="./pubs/Systems serology Vibrio cholerae disease.pdf" class="no-icon" target="_blank"><img src="images/Cite1.png" class="img-fluid"></a></td>
 </tr>
 <tr class="even">
 <td><strong>2022</strong></td>
 <td><ol start="2" type="1">
 <li>Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells.</li>
 </ol></td>
-<td><a href="./pubs/RS_CV_2026.pdf" class="no-icon" target="_blank"><img src="images/Cite2.png" class="img-fluid"></a></td>
+<td><a href="./pubs/High-throughput ID RNA LEs in neuronal cells.pdf" class="no-icon" target="_blank"><img src="images/Cite2.png" class="img-fluid"></a></td>
 </tr>
 <tr class="odd">
 <td><strong>2020</strong></td>
 <td><ol start="3" type="1">
-<li>Charles, R.C., Kelly, M., Tam, J.M., Akter, A., Hossain, M., Islam, K., Biswas, R., Kamruzzaman, M., Chowdhury, F., Khan, A.I., et al.&nbsp;(2020). Humans Surviving Cholera Develop Antibodies against Vibrio cholerae O-Specific Polysaccharide That Inhibit Pathogen Motility. mBio 11. <a href="https://journals.asm.org/doi/full/10.1128/mbio.02847-20">https://doi.org/10.1128/mbio.02847-20.</a></li>
+<li>Charles, R.C., Kelly, M., Tam, J.M., Akter, A., Hossain, M., Islam, K., Biswas, R., Kamruzzaman, M., Chowdhury, F., Khan, A.I., et al.&nbsp;(2020). Humans Surviving Cholera Develop Antibodies against Vibrio cholerae O-Specific Polysaccharide That Inhibit Pathogen Motility. mBio 11. <a href="https://journals.asm.org/doi/full/10.1128/mbio.02847-20">https://doi.org/10.1128/mbio.02847-20</a></li>
 </ol></td>
 <td><a href="./pubs/Post cholera anti-OSP antibodies that inhibit motility.pdf" class="no-icon" target="_blank"><img src="images/Cite3.png" class="img-fluid"></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td><ol start="4" type="1">
-<li>Marquis, K.A., Seykora, R., Weiss, A.N., Morris, M.C., and Ferran, M.C. (2020). The VSV matrix protein inhibits NF-κB and the interferon response independently in mouse L929 cells. Virology 548, 117–123. <a href="https://pdf.sciencedirectassets.com/272412/1-s2.0-S0042682220X00080/1-s2.0-S0042682220301240/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBEaCXVzLWVhc3QtMSJIMEYCIQDNo79J6PETkg%2FtJRkvVJTX%2FmWTUnbmBOom9MmYBcvSDAIhAL5337qbNi6%2F1CE%2Ft2VrU5IbpBA%2BKh3H8Xw9Xy7oelIuKrsFCNr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQBRoMMDU5MDAzNTQ2ODY1IgzISVUR2KHTPjS3em4qjwUVktKTBIuiS%2FqYaDfYABrbAqaTWx1xs6Bh6mwByss4eM2Nj2V2j3IxyM%2Fb6wKHzvN9ThmO4SxOYLFkB8bpvw3HrK6tRaFhopwOF%2FH%2FAwm4WjR5gOsJJlP8VDRypj7OJ6t72%2BZe0oP7mJwnf9XpN%2FCKTmx7c0uttTv8%2F7%2FMaGLngSkMfsHlKWLyb1j4XtNqiOKFMociqxbu3IEUIelGFgGL2We1PlldZFGfQqNtSZ36FIwH5XbVhtP0VTwoPxGaNsS%2FqXwLbEVizcr%2BIXMJqCoDQwGBYRRoV8%2FIMSuU0JoOHSn2khfSUrEY8sCByV0FFmjGuUPXunqzJDJjULPIyU%2FiOhrwvnXJn%2BAR917U3xFHoUbw9ujVnNOwmFTg1TktJiWJQgcWFaDiZ5Jv6uxKoRBECaYcmCgCps8aWjDhDiKrk35sFnnzjEfOUX1Xl4UmDWp4KFISSg5XG49cDYKiLpfVYIlffGhjn4sRJ1CGIhXBaXUqBNbJCfs5C2LdRjFD6rmEgy6v9v3NlEJPXAnsiXwqyjtSO8EbTHMQ3l08Z%2FMbyk%2FLa8w3pIUh%2FaL%2FZBgJtli52sIjZy47fMNJowzOjpRm6MfVc6n6lEVDQw9iSwYaxGKP58tA4VXkcfwyXYZh53G0Z2z4g4sbUJn56h9z0z8l0Rs6yxz%2FpF4LoFch7OR0T7NT20ZuAzwSy73fhKzr4Ic0LZB9lrBL4JKnR7p6G3Ve9KxxAS6UEHEfqJVeFhF3hKtW4jCVINIBeUslryonilZkiK3uV1UMfuPksq4MLxxc2wqcmHD1vyuAxKGA2TfE7Hm2bK0myQ3cyezcsmgD82KRln79Xv3DdbdpVJYsVxCKw3qdDN2hMLwoCOh8wj12MIH%2B%2FdYGOrAB5zmFs0Tl6cbNccuZaqnM82V3QXfaKKn9Mu1W0JNoo9twSkz8SuowS3R%2FYvfy7IDbJDeSKFU98iZfAwyRUabaiBlcj5smFtJ4W9cq1PW1d6pOhfi6m3EPaOX7%2Ftor0VeFFapwJTqx097Q0dfG4xWrpx7UQOwMVombYJoloCduoFrZSP3CbaxmfQ0F1PCk8Go3eUX1mg1XA5%2BQi%2BvDGIgDIw%2Fhe4L4hqfIfLNCEUPHR2M%3D&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20261026T171923Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=ASIAQ3PHCVTY5PNEJFNJ%2F20261026%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=9e5140aa8325893c478acaa1e82b4a3f67a4574f8804d716793dc21e29ef52a0&amp;hash=ac269e4117a8c1404ce52c3aa2e2a59e1a2282afa73a7e9a2a509dc8c11e01d4&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S0042682220301240&amp;tid=spdf-8b607307-d5ab-442f-9120-982648fb6f3e&amp;sid=5bb89d0a83e3d445d209001-ce49dd3b0c5agxrqa&amp;type=client&amp;tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&amp;rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&amp;ua=13170e53530353575706&amp;rr=a50b202e1c6796bd&amp;cc=us">https://doi.org/10.1016/j.virol.2020.06.013.</a></li>
+<li>Marquis, K.A., Seykora, R., Weiss, A.N., Morris, M.C., and Ferran, M.C. (2020). The VSV matrix protein inhibits NF-κB and the interferon response independently in mouse L929 cells. Virology 548, 117–123. <a href="https://pdf.sciencedirectassets.com/272412/1-s2.0-S0042682220X00080/1-s2.0-S0042682220301240/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBEaCXVzLWVhc3QtMSJIMEYCIQDNo79J6PETkg%2FtJRkvVJTX%2FmWTUnbmBOom9MmYBcvSDAIhAL5337qbNi6%2F1CE%2Ft2VrU5IbpBA%2BKh3H8Xw9Xy7oelIuKrsFCNr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQBRoMMDU5MDAzNTQ2ODY1IgzISVUR2KHTPjS3em4qjwUVktKTBIuiS%2FqYaDfYABrbAqaTWx1xs6Bh6mwByss4eM2Nj2V2j3IxyM%2Fb6wKHzvN9ThmO4SxOYLFkB8bpvw3HrK6tRaFhopwOF%2FH%2FAwm4WjR5gOsJJlP8VDRypj7OJ6t72%2BZe0oP7mJwnf9XpN%2FCKTmx7c0uttTv8%2F7%2FMaGLngSkMfsHlKWLyb1j4XtNqiOKFMociqxbu3IEUIelGFgGL2We1PlldZFGfQqNtSZ36FIwH5XbVhtP0VTwoPxGaNsS%2FqXwLbEVizcr%2BIXMJqCoDQwGBYRRoV8%2FIMSuU0JoOHSn2khfSUrEY8sCByV0FFmjGuUPXunqzJDJjULPIyU%2FiOhrwvnXJn%2BAR917U3xFHoUbw9ujVnNOwmFTg1TktJiWJQgcWFaDiZ5Jv6uxKoRBECaYcmCgCps8aWjDhDiKrk35sFnnzjEfOUX1Xl4UmDWp4KFISSg5XG49cDYKiLpfVYIlffGhjn4sRJ1CGIhXBaXUqBNbJCfs5C2LdRjFD6rmEgy6v9v3NlEJPXAnsiXwqyjtSO8EbTHMQ3l08Z%2FMbyk%2FLa8w3pIUh%2FaL%2FZBgJtli52sIjZy47fMNJowzOjpRm6MfVc6n6lEVDQw9iSwYaxGKP58tA4VXkcfwyXYZh53G0Z2z4g4sbUJn56h9z0z8l0Rs6yxz%2FpF4LoFch7OR0T7NT20ZuAzwSy73fhKzr4Ic0LZB9lrBL4JKnR7p6G3Ve9KxxAS6UEHEfqJVeFhF3hKtW4jCVINIBeUslryonilZkiK3uV1UMfuPksq4MLxxc2wqcmHD1vyuAxKGA2TfE7Hm2bK0myQ3cyezcsmgD82KRln79Xv3DdbdpVJYsVxCKw3qdDN2hMLwoCOh8wj12MIH%2B%2FdYGOrAB5zmFs0Tl6cbNccuZaqnM82V3QXfaKKn9Mu1W0JNoo9twSkz8SuowS3R%2FYvfy7IDbJDeSKFU98iZfAwyRUabaiBlcj5smFtJ4W9cq1PW1d6pOhfi6m3EPaOX7%2Ftor0VeFFapwJTqx097Q0dfG4xWrpx7UQOwMVombYJoloCduoFrZSP3CbaxmfQ0F1PCk8Go3eUX1mg1XA5%2BQi%2BvDGIgDIw%2Fhe4L4hqfIfLNCEUPHR2M%3D&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20261026T171923Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=ASIAQ3PHCVTY5PNEJFNJ%2F20261026%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=9e5140aa8325893c478acaa1e82b4a3f67a4574f8804d716793dc21e29ef52a0&amp;hash=ac269e4117a8c1404ce52c3aa2e2a59e1a2282afa73a7e9a2a509dc8c11e01d4&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S0042682220301240&amp;tid=spdf-8b607307-d5ab-442f-9120-982648fb6f3e&amp;sid=5bb89d0a83e3d445d209001-ce49dd3b0c5agxrqa&amp;type=client&amp;tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&amp;rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&amp;ua=13170e53530353575706&amp;rr=a50b202e1c6796bd&amp;cc=us">https://doi.org/10.1016/j.virol.2020.06.013</a></li>
 </ol></td>
 <td><a href="./pubs/M inhibits NF-κB and IFN independently mouse cells.pdf" class="no-icon" target="_blank"><img src="images/Cite4.png" class="img-fluid"></a></td>
 </tr>
 <tr class="odd">
 <td><strong>2019</strong></td>
 <td><ol start="5" type="1">
-<li>Weil, A.A., Seykora, R., and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere 4. <a href="https://journals.asm.org/doi/full/10.1128/msphere.00597-19">https://doi.org/10.1128/mSphere.00597-19.</a></li>
+<li>Weil, A.A., Seykora, R., and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere 4. <a href="https://journals.asm.org/doi/full/10.1128/msphere.00597-19">https://doi.org/10.1128/mSphere.00597-19</a></li>
 </ol></td>
 <td><a href="./pubs/V cholerae Immunity and the Microbiome.pdf" class="no-icon" target="_blank"><img src="images/Cite5.png" class="img-fluid"></a></td>
 </tr>
@@ -372,7 +380,7 @@ ul.task-list li input[type="checkbox"] {
 <td><ol start="6" type="1">
 <li>Pending citation update: A study investigating whether the presence of <em>Vibrio cholerae</em>-killing antibodies in young children predicts protection from future infection, as in older patients.</li>
 </ol></td>
-<td><a href="./pubs/RS_CV_2026.pdf" class="no-icon" target="_blank"><img src="images/Cite6.png" class="img-fluid"></a></td>
+<td><a href="./pubs/Vibriocidal Titer Protection From Cholera in Children.pdf" class="no-icon" target="_blank"><img src="images/Cite6.png" class="img-fluid"></a></td>
 </tr>
 </tbody>
 </table>
@@ -398,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 <td><ol type="1">
 <li>Pending citation update: A preliminary presentation examining vibriocidal antibody titers in children, and whether these are associated with protection against <em>V. cholerae</em> infection similarly across age strata.</li>
 </ol></td>
-<td><a href="./pubs/RS_CV_2026.pdf" class="no-icon" target="_blank"><img src="images/Cite7.png" class="img-fluid"></a></td>
+<td><a href="./pubs/Abstract Vibriocidal Titer Protection in Children Compared to Adults.pdf" class="no-icon" target="_blank"><img src="images/Cite7.png" class="img-fluid"></a></td>
 </tr>
 </tbody>
 </table>

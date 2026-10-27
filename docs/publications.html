@@ -224,7 +224,8 @@ ul.task-list li input[type="checkbox"] {
       }
     };
     const authorPrefersDark = true;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -235,6 +236,14 @@ ul.task-list li input[type="checkbox"] {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -367,32 +376,6 @@ ul.task-list li input[type="checkbox"] {
 <li>Pending citation update: A study investigating whether the presence of <em>Vibrio cholerae</em>-killing antibodies in young children predicts protection from future infection, as in older patients.</li>
 </ol></td>
 <td><a href="./pubs/Vibriocidal Titer Protection From Cholera in Children.pdf" class="no-icon" target="_blank"><img src="images/Cite6.png" class="img-fluid"></a></td>
-</tr>
-</tbody>
-</table>
-<div style="max-width: 500px; font-size: 1.2em; font-style: bold; margin: 5px auto; text-align: center; border: none; padding: 0px; background-color: transparent;">
-<p>Abstracts &amp; Presentations</p>
-</div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 45%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Year</th>
-<th>Citation</th>
-<th>View</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>2018</strong></td>
-<td><ol type="1">
-<li>Pending citation update: A preliminary presentation examining vibriocidal antibody titers in children, and whether these are associated with protection against <em>V. cholerae</em> infection similarly across age strata.</li>
-</ol></td>
-<td><a href="./pubs/Abstract Vibriocidal Titer Protection in Children Compared to Adults.pdf" class="no-icon" target="_blank"><img src="images/Cite7.png" class="img-fluid"></a></td>
 </tr>
 </tbody>
 </table>
