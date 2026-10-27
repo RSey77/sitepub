@@ -10,7 +10,7 @@ about:
       href: "mailto:rseykora@proton.me"
     - icon: file-earmark-person-fill
       text: View CV
-      href: /extra_pages/CV.qmd
+      href: /CV.qmd
       target: _blank
 ---
 
