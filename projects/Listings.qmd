@@ -10,7 +10,7 @@ listing:
     type: grid
     sort: "order asc"
     image-placeholder: "/images/neutrophils_line.png"
-    image-height: 270px
+    image-height: 170px
     fields: [image, title, description]
-    grid-columns: 2
+    grid-columns: 3
 ---

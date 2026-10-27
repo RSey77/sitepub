@@ -29,7 +29,7 @@ format:
       light: styles/mixinLight.scss
     respect-user-color-scheme: true
     css:
-      - styles.css
+      - styles/styles.css
     toc: true
 editor: visual
 

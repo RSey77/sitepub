@@ -44,3 +44,11 @@ html {
   margin: 0;
   line-height: 1.2;
 }
+
+@media (max-width: 767px) {
+  .quarto-grid-item .card-img-top img {
+    min-height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
