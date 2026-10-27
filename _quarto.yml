@@ -9,6 +9,7 @@ website:
   favicon: images/favicon.ico
   navbar:
     title: "Home"
+    site-url: "https://rsey77.github.io/sitepub/"
     logo: images/logo.png
     logo-alt: "xyz"
     collapse: false
