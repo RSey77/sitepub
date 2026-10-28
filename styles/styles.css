@@ -47,7 +47,7 @@ html {
 
 @media (max-width: 767px) {
   .quarto-grid-item .card-img-top img {
-    min-height: 270px;
+    min-height: 230px;
     object-fit: cover;
     object-position: center;
   }
