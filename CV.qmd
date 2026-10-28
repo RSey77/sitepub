@@ -8,6 +8,10 @@ format:
     link-external-newwindow: true
 ---
 
+## EDUCATION
+
+**B.S. • Molecular Biosciences** <br> *Rochester Institute of Technology* 
+
 ## PUBLICATIONS
 
 ::: justified-text
@@ -79,6 +83,4 @@ format:
 - Managed working order of the lab by procuring necessary reagents and supplies, maintaining and purchasing new equipment, and cataloging samples received by the lab.
 :::
 
-## EDUCATION
 
-**B.S. • Molecular Biosciences** <br> *Rochester Institute of Technology* [*2017*]{.cvdate}
