@@ -9,7 +9,7 @@ format:
 ---
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: justify; border: 0px solid #ccc; padding: 6px; border-radius: 5px; background-color: transparent;"}
-To view professional experience in more detail: [See CURRICULUM VITAE](/CV.qmd)
+To view professional experience in more detail, see [CURRICULUM VITAE](/CV.qmd)
 :::
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: center; border: none; padding: 10px; background-color: transparent;"}
