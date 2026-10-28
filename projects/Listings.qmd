@@ -1,4 +1,6 @@
 ---
+pagetitle: "Projects"
+title-block-banner: false
 subtitle: ""
 text: "A selection of written work"
 page-layout: full

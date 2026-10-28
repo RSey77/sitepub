@@ -1,5 +1,7 @@
 ---
 title: "CURRICULUM VITAE"
+pagetitle: "CV"
+title-block-banner: false
 description: "R. Seykora (she/her) • 719 838 2142"
 page-layout: full
 format:
@@ -10,7 +12,7 @@ format:
 
 ## EDUCATION
 
-**Bachelor of Science (BS) • Molecular Biosciences** <br> *Rochester Institute of Technology* 
+**Bachelor of Science (BS) • Molecular Biosciences** <br> *Rochester Institute of Technology*
 
 ## PUBLICATIONS
 
@@ -82,5 +84,3 @@ format:
 - Devised new protocols, upgraded existing methods, and authored highly detailed SOPs.
 - Managed working order of the lab by procuring necessary reagents and supplies, maintaining and purchasing new equipment, and cataloging samples received by the lab.
 :::
-
-

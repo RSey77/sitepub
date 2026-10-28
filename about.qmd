@@ -1,4 +1,6 @@
 ---
+pagetitle: "About"
+title-block-banner: false
 sidebar: false
 page-layout: full 
 toc: false
