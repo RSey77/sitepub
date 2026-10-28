@@ -4,13 +4,6 @@ page-layout: full
 toc: false
 about:
   template: jolla
-  links:
-    - icon: envelope
-      text: Email
-      href: "mailto:rseykora@proton.me"
-    - icon: file-earmark-person-fill
-      text: View CV
-      href: CV.qmd
 ---
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: center; border: 0px solid #ccc; padding: 10px; border-radius: 5px; background-color: transparent;"}
@@ -19,20 +12,22 @@ about:
 # (she/her, "sih-kora") {style="font-size: 1em; margin-top: 0px; margin-bottom: 5px;"}
 :::
 
-::: {style="max-width: 500px; margin: 10px auto; text-align: justify; border: 0px solid #ccc; padding: 6px; border-radius: 5px; background-color: transparent;"}
+::: {style="max-width: 500px; margin: 5px auto; text-align: justify; border: 0px solid #ccc; padding: 2px; border-radius: 5px; background-color: transparent;"}
 I am a research professional with B.S in Molecular Biology and years of combined experience in life science research, technical communication, data analysis and visualization, and project management. I am currently available for collaborative projects where my background aligns with your research needs.
 :::
 
-::: {style="max-width: 500px; font-size: 0.8em; font-style: italic; margin: 10px auto; text-align: justify; border: 0px solid #ccc; padding: 10px; border-radius: 5px; background-color: transparent;"}
+::: {style="max-width: 500px; font-size: 0.8em; font-style: italic; margin: 5px auto; text-align: justify; border: 0px solid #ccc; padding: 2px; border-radius: 5px; background-color: transparent;"}
 All graphic figures on this website were created by the site author unless otherwise stated.
 :::
-
 <a href= /extra_pages/references.qmd style="text-decoration: none;">Additional site references</a>
+
+---
+
 
 ::: {.text-center}
 ::: {.btn-group role="group" aria-label="Contact and Resume"}
-[<i class="bi bi-envelope"></i> Email](mailto:me@proton.me){.btn .btn-secondary role="button"}
-[<i class="bi bi-file-earmark-person-fill"></i> Resume](CV.qmd){.btn .btn-secondary role="button"}
+[<i class="bi bi-envelope"></i> Email](mailto:rseykora@proton.me){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; padding: 0.15rem 0.5rem;"}
+[<i class="bi bi-file-earmark-person-fill"></i> View CV](CV.qmd){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; padding: 0.15rem 0.5rem;"}
 :::
 :::
 
