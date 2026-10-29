@@ -1,9 +1,12 @@
 project:
   type: website
+  resources:
+    - CNAME
   output-dir: docs
 
 website:
   title: "R Seykora"
+  site-url: https://www.rowenseykora.com
   page-footer: 
     center: |
      Made with <img src="/images/quarto-logo.png" alt="Quarto" width="50"/> <span>and<span> <img src="/images/R-logo.png" alt="“R”" width="14"/> © 2026

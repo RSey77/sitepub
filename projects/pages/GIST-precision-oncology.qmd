@@ -16,6 +16,16 @@ editor:
     canonical: false
 ---
 
+:::: justified-text
+::: notice
+NOTE: If you or a loved one has been recently diagnosed with GIST and you were directed to this page, apologies, this is not a patient-facing site. Please visit The Life Raft Group or GIST Support International to learn more about getting mutational testing and connecting with a specialist.
+:::
+::::
+
+```{=html}
+<style> .notice { display: flex; justify-content: center; align-items: center; gap: 0px; padding: 0px 0px; color: #b83941; font-family: system-ui, -apple-system, sans-serif; font-size: 0.8rem; } </style>
+```
+
 ::: justified-text
 [**Gastrointestinal stromal tumors**](https://public.tableau.com/app/profile/rowen.seykora/viz/Mappingbiologicaldiversitywithinararegroupofcancers/Dashboard1 "View data dashboard on Tableau Public") are a class of sarcomas with a shared mesenchymal origin,^1,2^ most commonly arising from the interstitial cells of Cajal (ICCs), pacemaker cells that help coordinate rhythmic contractions in the gut walls.^3-5^
 
@@ -25,6 +35,11 @@ Sarcoma represents about 1% of adult cancers.^6^ While GIST accounts for anywher
 ```{ojs}
 //| echo: false
 colorallx = "currentColor"
+```
+
+```{ojs}
+//| echo: false
+mutation_color = "#FFFFFF"
 ```
 
 ```{ojs}
@@ -123,7 +138,7 @@ icicle = (S) => {
   };
 
   const text = cell.append("text")
-    .attr("x", 4).attr("y", 12).attr("fill", colorallx)
+    .attr("x", 4).attr("y", 12).attr("fill", mutation_color)
     .attr("fill-opacity", d => +visible(d.target))
     .style("pointer-events", "none")
     .each(wrapIcicle);
@@ -207,7 +222,7 @@ sunburst = (S) => {
     .attr("pointer-events", "none").attr("text-anchor", "middle")
     .style("user-select", "none")
     .selectAll("text").data(nodes).join("text")
-    .attr("fill", colorallx)
+    .attr("fill", mutation_color)
     .attr("fill-opacity", d => +labelVisible(d.current))
     .attr("transform", d => labelTransform(d.current))
     .each(function (d) { wrapRadial.call(this, d); });
@@ -361,15 +376,17 @@ Frequencies of the most common GIST primary mutations are shown in Figure 1. Spe
 **Mutational testing helps to anticipate variation in treatment response, allowing care teams to select interventions most likely to yield favorable outcomes.**^20,30^
 :::
 
-::: {style="border-bottom: 1px solid #ccc; height: 46px; line-height: 40px; text-align: center; padding: 0 15px; margin-bottom: 10px; font-size: 1rem;"}
-**Figure 2. Age at Diagnosis for a GIST Patient Cohort**
+------------------------------------------------------------------------
+
+::: {style="max-width: 500px; font-size: 1em; margin: 5px auto; text-align: center; border: 0px solid #ccc; padding: 1px; border-radius: 1px; background-color: transparent;"}
+Figure 2. Age at Diagnosis for a GIST Patient Cohort
 :::
 
 ::: {style="flex: 1 1 calc(37% - 5px); min-width: 300px;"}
 ```{=html}
 <div style="border: 1px solid #839496; border-radius: 8px; padding: 3px; background-color: rgba(131, 148, 150, 0.15); box-sizing: border-box;">
   <img src="/images/raincloud.png" style="display: block; margin: 0 auto; max-width: 100%;">
-  <div style="margin-top: 5px; padding: 3px; text-align: justify; font: 200 13px sans-serif; opacity: 0.7;">This raincloud plot shows the age distribution across 469 GIST cases, with a median approaching 60. About 72% of the patients were diagnosed at 50 or older. Data was accessed in 2026 and pulled from a publicly-available clinical dataset published to the cBioPortal for Cancer Genomics website in 2023 (MSK, Clin Cancer Res 2023).</div>
+  <div style="margin-top: 5px; padding: 3px; text-align: justify; font: 200 13px sans-serif; opacity: 0.7;">This raincloud plot shows the age distribution across 469 GIST cases, with a median approaching 60. About 72% of the patients were diagnosed at 50 or older. Data was accessed in 2026 and pulled from a publicly-available clinical dataset published to the cBioPortal for Cancer Genomics website in 2023 (Memorial Sloan Kettering Cancer Center - MSK, Clin Cancer Res 2023). Plot was created in R.</div>
 </div>
 ```
 :::
@@ -381,12 +398,14 @@ Frequencies of the most common GIST primary mutations are shown in Figure 1. Spe
 **Distributions of molecular subtypes vary by patient age demographic.**^31^ Most older patients have tumors arising from spontaneous mutations in KIT and PDGFRA that develop after decades of life.^32,33^ In pediatric patients, KIT/PDGFRA mutations make up a minority of incidents; familial variants are instead more common.^34^ Inherited drivers such as SDHx, NF1, and familial KIT/PDGFRA mutations result in a predisposition to disease that is present from birth, increasing the odds of tumor growth earlier in life.^35-37^ In this way, age at diagnosis orients diagnostic testing and can streamline treatment selection.^25^ Even after controlling for its association with driver frequencies, age impacts disease management. Guidelines for surgical resection, long-term monitoring, TKI dosing, and risk-adjusted treatment all vary by age group.^38^
 :::
 
-::: {style="border-bottom: 1px solid #ccc; height: 46px; line-height: 40px; text-align: center; padding: 0 15px; margin-bottom: 10px; font-size: 1rem;"}
-**Figure 3. Anatomy of GIST Primary Tumor Locations**
+------------------------------------------------------------------------
+
+::: {style="max-width: 500px; font-size: 1em; margin: 5px auto; text-align: center; border: 0px solid #ccc; padding: 1px; border-radius: 1px; background-color: transparent;"}
+Figure 3. Anatomy of GIST Primary Tumor Locations
 :::
 
 ::: justified-text
-GIST can occur throughout the digestive tract, but originates in certain locations more often.^39^ Primary site is clinically relevant; it has implications for how a case can be treated, what symptoms may present, and whether metastasis is likely.
+GIST can occur throughout the digestive tract, but originates in certain locations more often.^39^ This asymmetry in primary site distribution is clinically relevant. Tumor location of origin has implications for how a case should be managed, and helps predict facets of disease progression, such as probable symptoms and the likelihood of metastasis.
 :::
 
 ```{ojs}

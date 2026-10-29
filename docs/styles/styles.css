@@ -17,11 +17,11 @@ body.quarto-dark .quarto-listing-container-grid .card-img-top {
 }
 
 body.quarto-light .hero-banner {
-  filter: invert(1); brightness(0.05) contrast(1.8);
+  filter: invert(1); 
 }
 
 body.quarto-light .quarto-listing-container-grid .card-img-top {
-  filter: invert(1); brightness(0.05) contrast(1.8);
+  filter: invert(1);
 }
 
 html {
