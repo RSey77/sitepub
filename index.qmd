@@ -76,8 +76,6 @@ main.content {
 ::: hero-banner
 :::
 
-
-
-::: {.text-center}
+::: text-center
 [Publications & Additional Work](work.qmd){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; border-width: 0.5px; font-weight: 200; padding: 0.3rem 0.5rem; margin: 1rem 0;  border-radius: .7rem;"}
 :::

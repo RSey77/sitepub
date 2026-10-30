@@ -620,7 +620,7 @@ treemapChart = (W, H) => {
 ```{=html}
 <div style="border: 1px solid #839496; border-radius: 8px; padding: 3px; background-color: rgba(131, 148, 150, 0.15); box-sizing: border-box;">
   <img src="/images/anatomyfig%20for%20site.png" style="display: block; margin: 0 auto; max-width: 100%;">
-  <div style="margin-top: 2px; padding: 3px; text-align: left; font: 400 14px sans-serif; opacity: 1;">Figure 3b. General Primary Site Frequencies</div>
+  <div style="margin-top: 2px; padding: 3px; text-align: left; font: 400 14px sans-serif; opacity: 1;">Figure 3b. Global Primary Site Frequencies</div>
   <div style="margin-top: 0px; padding: 3px; text-align: justify; font: 200 13px sans-serif; opacity: 0.7;">The percentage ranges above are epidemiological estimates. They do not reflect a single clinical data set, but rather, derive from global established trends.</div>
 </div>
 ```

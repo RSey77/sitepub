@@ -140,8 +140,8 @@ $pagination-disabled-border-color:  rgba($site-text, .1) !default;
 // Cards
 
 $card-border-color: rgba($site-text, 1) !default;
-$card-cap-bg:       rgba($site-text, .1) !default;
-$card-bg:           rgba(247, 247, 242, 0.50) !default;
+$card-cap-bg:       rgba($site-text, 0.0) !default;
+$card-bg:           rgba(247, 247, 242, 0.00) !default;
 
 // Popovers
 

@@ -26,7 +26,7 @@ format:
 
   - **2022**
   - 
-    2.  Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells.
+    2.  Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells. _5th author, published 2022_
   - [![](images/Cite2.png)](/pubs/High-throughput%20ID%20RNA%20LEs%20in%20neuronal%20cells.pdf){.no-icon target="_blank"}
 
 - 
@@ -50,7 +50,7 @@ format:
 
   - **2019**
   - 
-    5.  Weil, A.A., Seykora, R., and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere. [https://doi.org/10.1128/mSphere.00597-19](https://journals.asm.org/doi/full/10.1128/msphere.00597-19)
+    5.  Weil, A.A., Seykora, R., and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere. 4. [https://doi.org/10.1128/mSphere.00597-19](https://journals.asm.org/doi/full/10.1128/msphere.00597-19)
   - [![](images/Cite5.png)](/pubs/V%20cholerae%20Immunity%20and%20the%20Microbiome.pdf){.no-icon target="_blank"}
 
 - 
@@ -59,7 +59,7 @@ format:
 
   - 
 
-    6.  Pending citation update: A study investigating the presence of *Vibrio cholerae*-killing antibodies in young children and the impact on protection from future infection
+    6.  Pending citation update: A study investigating the presence of *Vibrio cholerae*-killing antibodies in young children and the impact on protection from future infection. _4th author, published 2019_
 
   - [![](images/Cite6.png)](/pubs/Vibriocidal%20Titer%20Protection%20From%20Cholera%20in%20Children.pdf){.no-icon target="_blank"}
 :::

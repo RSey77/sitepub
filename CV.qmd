@@ -19,7 +19,7 @@ format:
 ::: justified-text
 - Pending citation update: A systems serology study investigating correlates of protection against *Vibrio cholerae* infection. (2023)
 
-- Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells. (2022)
+- Pending citation update: The high-throughput identification of RNA sequence elements that drive localization of transcripts in neuronal cells. _5th author, published 2022_
 
 - Charles, R.C., Kelly, M., Tam, J.M., Akter, A., Hossain, M., Islam, K., Biswas, R., Kamruzzaman, M., Chowdhury, F., Khan, A.I., et al. (2020). Humans Surviving Cholera Develop Antibodies against Vibrio cholerae O-Specific Polysaccharide That Inhibit Pathogen Motility. mBio 11. [https://doi.org/10.1128/mbio.02847-20](https://journals.asm.org/doi/full/10.1128/mbio.02847-20)
 
@@ -27,7 +27,7 @@ format:
 
 - Weil, A.A., Seykora, R., and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere 4. [https://doi.org/10.1128/mSphere.00597-19](https://journals.asm.org/doi/full/10.1128/msphere.00597-19)
 
-- Pending citation update: A study investigating the presence of *Vibrio cholerae*-killing antibodies in young children and the impact on protection from future infection. (2019)
+- Pending citation update: A study investigating the presence of *Vibrio cholerae*-killing antibodies in young children and the impact on protection from future infection. _4th author, published 2019_
 :::
 
 ## PRESENTATIONS & ABSTRACTS {style="page-break-before: always"}
