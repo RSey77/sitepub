@@ -31,7 +31,7 @@ format:
     theme:
       dark: styles/mixinDark.scss
       light: styles/mixinLight.scss
-    respect-user-color-scheme: true
+    respect-user-color-scheme: false
     css:
       - styles/styles.css
     toc: true
