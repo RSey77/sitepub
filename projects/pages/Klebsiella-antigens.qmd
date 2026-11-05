@@ -2,7 +2,7 @@
 title: "Diversity of *Klebsiella* Surface Antigens O and K"
 description: "Graphic Figures & Accompanying Vignette, Last edited: 2025"
 image: "/images/test klebs.png"
-order: 2
+order: 1
 page-layout: full
 css: styles.css
 ---

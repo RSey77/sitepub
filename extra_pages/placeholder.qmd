@@ -1,0 +1,17 @@
+---
+pagetitle: "Coming soon"
+title-block-banner: false
+sidebar: false
+page-layout: full 
+toc: false
+about:
+  template: jolla
+---
+
+::: {style="max-width: 500px; font-size: 1em; font-style: italic; margin: 5px auto; text-align: center; border: 0px solid #ccc; padding: 2px; border-radius: 5px; background-color: transparent;"}
+A downloadable copy of this published manuscript or additional information on the study will be added to the site shortly.
+:::
+
+<a href="/publications.qmd">Back to publication page</a>
+
+------------------------------------------------------------------------

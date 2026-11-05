@@ -3,7 +3,7 @@ title: "GIST Sarcoma as a model for precision oncology"
 listing-title: "GIST Sarcoma: An interactive data dashboard"
 subtitle: "Gastrointestinal Stromal Tumors: For this rare cancer group, genetic insight helps guide treatment."
 description: "Interactive Data Story (Narrative Dashboard), Authored: 2026"
-order: 1
+order: 2
 page-layout: full
 image: "/images/GIST_outline.png"
 format: html

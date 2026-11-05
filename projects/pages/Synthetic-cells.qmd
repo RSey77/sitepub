@@ -9,15 +9,15 @@ execute:
   fig-align: center
 ---
 
-![](/images/viacomp1.png){fig-align="center"}
+![](/images/viacomp1.png){.invert-dark .invert-light fig-align="center"}
 
-![](/images/viacomp2.png){fig-align="center"}
+![](/images/viacomp2.png){.invert-dark .invert-light fig-align="center"}
 
-![](/images/viacomp3.png){fig-align="center"}
+![](/images/viacomp3.png){.invert-dark .invert-light fig-align="center"}
 
 ```{=html}
 <details>
-  <summary>References</summary>
+<summary>References</summary>
   <img src="/images/viacomp-ref.png" style="width: 1350px; max-width: 95%; height: auto;" />
 </details>
 ```

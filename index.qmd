@@ -25,6 +25,7 @@ main.content {
 
 .hero-banner {
   position: relative;
+  overflow: visible !important;
   width: 100vw;
   height: 77vh; 
   margin-left: calc(-50vw + 50%);
@@ -37,7 +38,30 @@ main.content {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-bottom: 1px solid rgba(140, 139, 161, 1);
+  border-bottom: 0.8px solid #a39c93;
+}
+
+.hero-banner .custom-tooltip {
+  display: none;
+  position: absolute !important;
+  bottom: 40px !important; 
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999 !important;
+  background-color: #222222 !important;
+  color: #ffffff !important;
+  padding: 3px 5px !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  width: max-content; 
+}
+
+.hero-banner .custom-tooltip em {
+  font-style: italic !important;
+}
+
+.hero-banner:hover .custom-tooltip {
+  display: block !important;
 }
 
 .hero-buttons {
@@ -73,9 +97,16 @@ main.content {
 </style>
 ```
 
+
 ::: hero-banner
+[ _Trichoderma_ sp. and _Bacillus_ sp.]{.custom-tooltip}
 :::
 
-::: text-center
-[Publications & Additional Work](work.qmd){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; border-width: 0.5px; font-weight: 200; padding: 0.3rem 0.5rem; margin: 1rem 0;  border-radius: .7rem;"}
+::: {style="height: 15px;"}
 :::
+
+:::: text-center
+::: {.btn-group role="group" aria-label="Publications, Research, CV"}
+[<i class="bi bi-clipboard-data"></i> Publications](/publications.qmd){.btn .btn-outline-secondary .btn-sm role="button" style="color: color-mix(in srgb, inherit 85%, transparent); border-color: currentColor; border-width: 0.5px; font-weight: 300; padding: 0.15rem 0.5rem;"} [<i class="bi bi-info-circle"></i> About](/about.qmd){.btn .btn-outline-secondary .btn-sm role="button" style="color: color-mix(in srgb, inherit 85%, transparent); border-color: currentColor; border-width: 0.5px; font-weight: 300; padding: 0.15rem 0.5rem;"}
+:::
+::::

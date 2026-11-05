@@ -11,18 +11,30 @@
   text-align: justify;
 }
 
-body.quarto-dark .hero-banner,
+body.quarto-dark .hero-banner {
+  filter: invert(1) brightness(0.8);
+}
+
 body.quarto-dark .quarto-listing-container-grid .card-img-top {
-  filter: invert(0);
+  filter: invert(1);
 }
 
 body.quarto-light .hero-banner {
-  filter: invert(1); 
+  filter: invert(0) opacity(0.8); 
 }
 
 body.quarto-light .quarto-listing-container-grid .card-img-top {
-  filter: invert(1);
+  filter: invert(0);
 }
+
+.quarto-dark img.invert-dark {
+  filter: invert(1) ;
+}
+
+.quarto-light img.invert-light {
+  filter: invert(0) hue-rotate(180deg);
+}
+
 
 html {
   scrollbar-gutter: stable;
@@ -52,3 +64,4 @@ html {
     object-position: center;
   }
 }
+
