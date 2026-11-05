@@ -11,7 +11,7 @@ format:
 ---
 
 ::: {style="display: flex; justify-content: center; margin: 20px 0;"}
-<a href="pubs/CV.pdf" download="RSeykora_CV_2026.pdf"  style="text-decoration: none;"> <button style="padding: 5px 5px; cursor: pointer; color: currentColor; background-color: transparent;"> Download CV </button> </a>
+<a href="files/CV.pdf" download="RSeykora_CV_2026.pdf"  style="text-decoration: none;"> <button style="padding: 5px 5px; cursor: pointer; color: currentColor; background-color: transparent;"> Download CV </button> </a>
 :::
 
 ## EDUCATION

@@ -26,6 +26,6 @@ All graphic figures on this website were created by the site author unless other
 
 :::: text-center
 ::: {.btn-group role="group" aria-label="Contact and Resume"}
-[<i class="bi bi-envelope"></i> Email](mailto:rseykora@proton.me){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; padding: 0.15rem 0.5rem;"} [<i class="bi bi-file-earmark-person-fill"></i> View CV](/pubs/CV.pdf){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; padding: 0.15rem 0.5rem;"}
+[<i class="bi bi-envelope"></i> Email](mailto:rseykora@proton.me){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; padding: 0.15rem 0.5rem;"} [<i class="bi bi-file-earmark-person-fill"></i> View CV](/files/CV.pdf){.btn .btn-outline-secondary .btn-sm role="button" style="color: inherit; border-color: currentColor; padding: 0.15rem 0.5rem;"}
 :::
 ::::

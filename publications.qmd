@@ -10,11 +10,9 @@ format:
     link-external-newwindow: true
 ---
 
-
 ::: {style="max-width: 500px; margin: 5px auto; text-align: center; padding: 6px;"}
-For a complete overview of my professional experience, download <a href="/pubs/CV.pdf" download="RSeykora_CV_2026.pdf" class="no-icon">CURRICULUM VITAE</a>.
+For a complete overview of my professional experience, download <a href="/files/CV.pdf" download="RSeykora_CV_2026.pdf" class="no-icon">CURRICULUM VITAE</a>.
 :::
-
 
 ::: {style="max-width: 500px; margin: 10px auto; text-align: center; border: none; padding: 10px; background-color: transparent;"}
 ### Publications <small style="font-size: 0.7em; font-weight: normal; background-color: color-mix(in srgb, #ffd700 35%, transparent); color: inherit; padding: 1px 5px; border-radius: 3px;">(NOTE: those undergoing updates do not yet have active links)</small> {style="font-size: 1.1em; font-weight: semi-bold; margin-bottom: 5px;"}
@@ -52,7 +50,7 @@ total citations 192 · h-index 6 · i10-index 5
   - 
     3.  Charles, R.C., Kelly, M., Tam, J.M., Akter, A., (& 27 others including **Seykora R.**, Harris J.B., and Ryan E.T.) (2020). Humans Surviving Cholera Develop Antibodies against Vibrio cholerae O-Specific Polysaccharide That Inhibit Pathogen Motility. mBio 11. [https://doi.org/10.1128/mbio.02847-20](https://journals.asm.org/doi/full/10.1128/mbio.02847-20){target="_blank" rel="noopener noreferrer"}
   - 28
-  - [![](/images/Cite3.png)](/pubs/Post%20cholera%20anti-OSP%20antibodies%20that%20inhibit%20motility.pdf){.no-icon target="_blank"}
+  - [![](/images/Cite3.png)](/files/Post%20cholera%20anti-OSP%20antibodies%20that%20inhibit%20motility.pdf){.no-icon target="_blank"}
 
 - 
 
@@ -61,8 +59,10 @@ total citations 192 · h-index 6 · i10-index 5
   - 
 
     4.  Marquis, K.A., **Seykora, R.**, Weiss, A.N., Morris, M.C., and Ferran, M.C. (2020). The VSV matrix protein inhibits NF-κB and the interferon response independently in mouse L929 cells. Virology 548, 117–123. [https://doi.org/10.1016/j.virol.2020.06.013](https://www.sciencedirect.com/science/article/pii/S0042682220301240){target="_blank" rel="noopener noreferrer"}
+
   - 19
-  - [![](/images/Cite4.png)](/pubs/M%20inhibits%20NF-κB%20and%20IFN%20independently%20mouse%20cells.pdf){.no-icon target="_blank"}
+
+  - [![](/images/Cite4.png)](/files/M%20inhibits%20NF-κB%20and%20IFN%20independently%20mouse%20cells.pdf){.no-icon target="_blank"}
 
 - 
 
@@ -70,7 +70,7 @@ total citations 192 · h-index 6 · i10-index 5
   - 
     5.  Weil, A.A., **Seykora, R.**, and Harris, J.B. (2019). Vibrio cholerae at the Intersection of Immunity and the Microbiome. mSphere. [https://doi.org/10.1128/mSphere.00597-19](https://journals.asm.org/doi/full/10.1128/msphere.00597-19){target="_blank" rel="noopener noreferrer"}
   - 51
-  - [![](/images/Cite5.png)](/pubs/V%20cholerae%20Immunity%20and%20the%20Microbiome.pdf){.no-icon target="_blank"}
+  - [![](/images/Cite5.png)](/files/V%20cholerae%20Immunity%20and%20the%20Microbiome.pdf){.no-icon target="_blank"}
 
 - 
 
@@ -79,12 +79,14 @@ total citations 192 · h-index 6 · i10-index 5
   - 
 
     6.  **Pending citation update:** A study investigating the presence of *Vibrio cholerae*-killing antibodies in young children and the impact on protection from future infection
+
   - 20
+
   - [![](/images/Cite6.png)](/extra_pages/placeholder.qmd){.no-icon target="_blank"}
 :::
 
 ::: {style="max-width: 770px; font-size: 1em; font-style: italic; margin: 5px auto; text-align: justify; border: 0px solid #ccc; padding: 2px; border-radius: 5px; background-color: transparent;"}
-Citation counts and additional metrics for each article are available directly from the journal sites (DOIs) linked above. H-index and i10-index were calculated in late 2026 from these publisher-sourced counts directly. 
+Citation counts and additional metrics for each article are available directly from the journal sites (DOIs) linked above. H-index and i10-index were calculated in late 2026 from these publisher-sourced counts directly.
 :::
 
 ::: {style="max-width: 770px; font-size: 0.8em; font-style: italic; margin: 5px auto; text-align: justify; border: 0px solid #ccc; padding: 2px; border-radius: 5px; background-color: transparent;"}
